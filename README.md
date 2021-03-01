@@ -11,3 +11,24 @@
 bundle exec rubocop --require rubocop-airbnb
 ```
 
+## バッヂ処理
+- gemのインストール
+```
+gem 'whenever', require: false
+bundle install
+```
+- config/schedule.rbの作成
+```
+bundle exec wheneverize
+```
+- config/schedule.rbの編集
+  - 定期的に行いたい処理が書かれているファイルの指定
+  - 実行間隔　　　　　　　　　　　　　　　　　　　　など
+- crontabへの反映
+```
+bundle exec whenever --update-crontab
+```
+- crontabへの反映確認
+```
+crontab -l
+```
