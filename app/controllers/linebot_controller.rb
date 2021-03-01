@@ -15,7 +15,7 @@ class LinebotController < ApplicationController
 
 
    def callback
-     #bodyに打ち込まれた値等々、ParamaterがJSON形式で格納される
+     # bodyに打ち込まれた値の格納(JSON)
      body = request.body.read
 
      #X-Line-Signatureリクエストヘッダーに含まれる署名を検証して、リクエストがLINEプラットフォームから送信されたことを確認する必要があります.(公式)
