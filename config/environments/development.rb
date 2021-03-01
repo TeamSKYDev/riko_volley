@@ -75,4 +75,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.reload_classes_only_on_change = false
+
+  # ngrok用　立ち上げるごとに変わるため、用変更が必要
+  config.hosts << "608a6976980f.ngrok.io"
 end
