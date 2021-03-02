@@ -19,18 +19,14 @@ html
 
     main
       .container
-        .notice-message style="position: relative;"
+        .notice-message
           - if flash[:notice]
-            .toast.show.fade role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top: 0; right: 0; width:20em;"
-              .toast-header
-                strong.mr-auto
-                  | りこばれ掲示板
+            javascript:
+              toastr.success("#{flash[:notice]}")
+          - elsif flash[:error]
+            javascript:
+              toastr.error("#{flash[:error]}")
 
-                button.ml-2.mb-1.close type="button" data-dismiss="toast" aria-label="Close"
-                  span aria-hidden="true"
-                    | &times;
-              .toast-body
-                = flash[:notice]
         .content
           = yield
 

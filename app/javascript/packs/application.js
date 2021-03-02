@@ -13,13 +13,11 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'bootstrap';
 import '../stylesheets/application';
+import toastr from 'toastr';
+window.toastr = toastr;
+
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-
-
-$(function () {
-  $('.toast').toast({animation:true, autohide: true, delay:3000});
-});
