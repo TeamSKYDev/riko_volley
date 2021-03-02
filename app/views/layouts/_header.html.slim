@@ -1,0 +1,7 @@
+nav.navbar.navbar-light.bg-light
+  = link_to('りこばれ掲示板', posts_path, class: 'navbar-brand')
+  - if user_signed_in?
+    = link_to('ログアウト', destroy_user_session_path, method: :delete, class: 'navbar-brand')
+  - else
+    = link_to('ログイン', new_user_session_path, class: 'navbar-brand')
+        

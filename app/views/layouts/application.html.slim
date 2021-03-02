@@ -10,12 +10,7 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
-      .container 
-        - if user_signed_in?
-          = link_to "ログアウト", destroy_user_session_path, method: :delete
-        - else
-          = link_to "ログイン", new_user_session_path
-
+      = render(partial: 'layouts/header')
     main
       .container
         = yield

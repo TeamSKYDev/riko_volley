@@ -1,0 +1,17 @@
+= form_with(model: post) do |f|
+  - if post.errors.any?
+    #error_explanation
+      h2 
+        = pluralize(post.errors.count, 'error')
+        | prohibited this user from being saved:
+      ul
+        - post.errors.full_messages.each do |message|
+          li      
+            = message
+  .form-group
+    = f.label(:title, 'タイトル')
+    = f.text_field(:title, placeholder: 'タイトル', class: 'form-control')
+  .form-group
+    = f.label(:body, '内容')
+    = f.text_area(:body, class: 'form-control')
+  = f.submit('投稿', class: 'btn btn-primary')
