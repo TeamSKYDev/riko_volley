@@ -31,7 +31,11 @@ class LinebotController < ApplicationController
         if exercises.present?
           response = exercises.set_response(schedule)
         else
-          response = schedule + "は練習が予定されていません"
+          if schedule.present?
+            response = schedule + "は練習が予定されていません"
+          else
+            response = "「" + event.message['text'] + "」は読み込めませんでした... \n ゴメンネ！"
+          end
         end
       end
 
@@ -50,5 +54,6 @@ class LinebotController < ApplicationController
 
      head :ok
    end
+   
 
 end
