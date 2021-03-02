@@ -36,4 +36,42 @@ crontab -l
 ## heroku schedulerを使ったバッヂ処理
 [参考](https://qiita.com/isotai/items/44735d9e7d9ceaef9c48)
 
+## webpackerを使用したbootstrapの導入法
+- rails5のようにasset下にjsフォルダを作ることもできるが、せっかくなのでrails6仕様に
+
+- yarnを用いて必要なものをインストール
+```
+yarn add jquery bootstrap popper.js
+```
+
+- config/webpack/environment.jsの設定追記。
+```
+const webpack = require('webpack')
+environment.plugins.prepend(
+  'Provide',
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+    Popper: 'popper.js'
+  })
+)
+```
+- app/javascriptディレクトリの下にstylesheetsディレクトリを作り、application.scssに追記
+```
+@import '~bootstrap/scss/bootstrap';
+```
+
+- application.jsに追記
+```
+import 'bootstrap';
+import '../stylesheets/application';
+```
+
+- application.html.erbに追記
+```
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+```
+
+
 

@@ -8,16 +8,28 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header
-      .container 
-        - if user_signed_in?
-          = link_to "ログアウト", destroy_user_session_path, method: :delete
-        - else
-          = link_to "ログイン", new_user_session_path
+    header.navbar.navbar-dark.bg-dark style="height: 50px;"
+      .container
+        .row.navbar-nav.ml-auto
+          .nav-item.active
+            - if user_signed_in?
+              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link"
+            - else
+              = link_to "ログイン", new_user_session_path, class: "nav-link"
 
     main
       .container
-        = yield
+        .notice-message
+          - if flash[:notice]
+            javascript:
+              toastr.success("#{flash[:notice]}")
+          - elsif flash[:error]
+            javascript:
+              toastr.error("#{flash[:error]}")
+
+        .content.mt-5
+          = yield
 
     footer
