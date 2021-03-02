@@ -10,12 +10,14 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header
+    header.navbar.navbar-dark.bg-dark style="height: 50px;"
       .container
-        - if user_signed_in?
-          = link_to "ログアウト", destroy_user_session_path, method: :delete
-        - else
-          = link_to "ログイン", new_user_session_path
+        .row.navbar-nav.ml-auto
+          .nav-item.active
+            - if user_signed_in?
+              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link"
+            - else
+              = link_to "ログイン", new_user_session_path, class: "nav-link"
 
     main
       .container
@@ -27,7 +29,7 @@ html
             javascript:
               toastr.error("#{flash[:error]}")
 
-        .content
+        .content.mt-5
           = yield
 
     footer
