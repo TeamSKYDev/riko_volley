@@ -22,5 +22,7 @@ module RikoVolley
     config.paths.add 'lib', eager_load: true
 
     config.time_zone = 'Tokyo'
+
+    config.i18n.default_locale = :ja
   end
 end
