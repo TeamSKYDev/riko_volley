@@ -34,7 +34,6 @@ crontab -l
 ```
 
 ## heroku schedulerを使ったバッヂ処理
-```
-https://qiita.com/isotai/items/44735d9e7d9ceaef9c48
-```
+[参考](https://qiita.com/isotai/items/44735d9e7d9ceaef9c48)
+
 
