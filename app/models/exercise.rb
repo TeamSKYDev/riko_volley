@@ -35,4 +35,23 @@ class Exercise < ApplicationRecord
     response = response + "です！"
     return response
   end
+
+  def self.search_for_days_after(setting_day)
+    Exercise.where(started_at: Date.today.since(setting_day.days).all_day)
+  end
+
+  def self.set_notification(setting_day)
+    if setting_day == 1
+      display_day = "明日"
+    elsif setting_day == 2
+      display_day = "明後日"
+    else
+      display_day = setting_day.to_s + "日後に"
+    end
+    response =  display_day + "りこばれがあります！　\n"
+    self.all.each do |exercise|
+      response = response + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place.name + "\n"
+    end
+    return response
+  end
 end

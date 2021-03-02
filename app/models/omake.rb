@@ -1,5 +1,9 @@
 class Omake < ApplicationRecord
   def self.creator_response(word)
-    Omake.find_by(["key_word LIKE ?", "%#{word}%"]).response
+    omake = Omake.find_by(["key_word LIKE ?", "%#{word}%"])
+    if omake.present?
+      response = omake.response
+    end
+    return response
   end
 end

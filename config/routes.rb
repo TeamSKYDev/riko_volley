@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   post "/callback" => "linebot#callback"
   root "home#top"
+
+  resources :notifications, only: [:update]
 end
