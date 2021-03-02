@@ -1,11 +1,13 @@
 class Exercise < ApplicationRecord
+  belongs_to :post
+  belongs_to :place
 
   def self.search_for(schedule)
     if schedule.include?("今日")
       exercises = Exercise.where(started_at: Date.today.all_day)
       schedule_text = "今日"
     elsif schedule.include?("明日")
-      exercises = Exercise.where(started_at: Date.tomorrow.all_week)
+      exercises = Exercise.where(started_at: Date.tomorrow.all_day)
       schedule_text = "明日"
     elsif schedule.include?("今週")
       exercises = Exercise.where(started_at: Date.today.all_week)
@@ -24,10 +26,10 @@ class Exercise < ApplicationRecord
     return exercises, schedule_text
   end
 
-  def set_response(schedule)
+  def self.set_response(schedule)
     response = schedule + "の予定は　\n"
-    self.each do |exercise|
-      response = response + exercise.started_at.strftime("%m/%d-%H:%M") + "~ @" + exercise.place.name + "\n"
+    self.all.each do |exercise|
+      response = response + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place.name + "\n"
     end
 
     response = response + "です！"
