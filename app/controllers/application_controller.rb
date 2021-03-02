@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   # ログイン後遷移先パス指定
   def after_sign_in_path_for(resouce)
-    root_path
+    posts_path
   end
   # ログアウト後遷移先パス指定
   def after_sign_out_path_for(resouce)

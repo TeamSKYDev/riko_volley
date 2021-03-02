@@ -1,0 +1,6 @@
+.nested-fields
+  = f.datetime_select :started_at
+  | ~
+  = f.datetime_select :ended_at
+  = f.collection_select(:place_id, Place.all, :id, :name)
+  = link_to_remove_association '削除', f
