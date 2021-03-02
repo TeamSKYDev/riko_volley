@@ -73,5 +73,3 @@ gem 'slim-rails'
 gem 'html2slim'
 
 gem 'pry-byebug'
-
-gem 'whenever', require: false

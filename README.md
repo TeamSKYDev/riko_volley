@@ -11,7 +11,7 @@
 bundle exec rubocop --require rubocop-airbnb
 ```
 
-## バッヂ処理
+## cronを使ったバッヂ処理(docker非対応)
 - gemのインストール
 ```
 gem 'whenever', require: false
@@ -32,3 +32,9 @@ bundle exec whenever --update-crontab
 ```
 crontab -l
 ```
+
+## heroku schedulerを使ったバッヂ処理
+```
+https://qiita.com/isotai/items/44735d9e7d9ceaef9c48
+```
+

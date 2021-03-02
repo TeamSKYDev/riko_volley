@@ -76,6 +76,6 @@ Rails.application.configure do
 
   config.reload_classes_only_on_change = false
 
-  # ngrok用　立ち上げるごとに変わるため、毎回変更が必要
-  config.hosts << "e78ccdc80304.ngrok.io"
+  # ngrok用。ngrok立ち上げるごと変更が必要。コンフリのときは消して問題なし
+  config.hosts << "3b9b970ce1f9.ngrok.io"
 end

@@ -36,3 +36,9 @@ Omake.create(
   ]
 
 )
+
+Notification.create(
+  id: 1,
+  status: true,
+  days_before: 1
+)
