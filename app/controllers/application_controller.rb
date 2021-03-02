@@ -3,8 +3,13 @@ class ApplicationController < ActionController::Base
   # before_action :authenticate_user!, expect: [:index]
 
   # ログイン後遷移先パス指定
-  # def after_sign_in_path_for(resouce)
-  # end
+  def after_sign_in_path_for(resouce)
+    root_path
+  end
+  # ログアウト後遷移先パス指定
+  def after_sign_out_path_for(resouce)
+    root_path
+  end
 
   private
   # botアカウント(クライアント)設定
@@ -15,5 +20,4 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  
 end

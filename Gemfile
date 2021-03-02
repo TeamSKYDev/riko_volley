@@ -72,3 +72,5 @@ gem 'html2slim'
 
 gem 'pry-byebug'
 
+gem 'devise-i18n'
+gem 'devise-i18n-views'
