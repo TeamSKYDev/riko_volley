@@ -6,7 +6,33 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(
+User.create(
   email: "a@a",
   password: "aaaaaa"
+)
+
+Omake.create(
+  [
+    {
+      key_word: "creators作成者",
+      response: "Koki & Shuya"
+    },
+
+    {
+      key_word: "天才",
+      response: "Shuya"
+    },
+
+    {
+      key_word: "ありがとうサンクスさんきゅあざす",
+      response: "どういたしまして！使ってくれてありがとう！"
+    },
+
+    {
+      key_word: "もんだ",
+      response: "かどたろう"
+    },
+
+  ]
+
 )
