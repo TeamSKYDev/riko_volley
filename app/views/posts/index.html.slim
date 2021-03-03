@@ -1,5 +1,11 @@
 - if user_signed_in?
-  = render "form", post: @post
+  = render "tab"
+  .tab-content.mt-4
+    #post.tab-pane.active
+      = render "form", post: @post
+    #place.tab-pane
+
+    #notification.tab-pane
 
 h2
   | index
