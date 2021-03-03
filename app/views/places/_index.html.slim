@@ -16,12 +16,12 @@
     .col-6.offset-1
       h4
         | 新規追加
-      = form_with(model: place, local: true) do |f|
+      = form_with(model: place, local: false) do |f|
         .input-group
           = f.text_field :name, placeholder: "場所名", class: "form-control place-form"
           .input-group-append
             = f.submit "登録", class: "btn btn-primary"
 
   .row
-    .modal.fade#edit-place-modal tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+    .modal.fade#edit-place-modal tabindex="-1" role="dialog" aria-hidden="true">
 

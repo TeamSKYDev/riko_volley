@@ -12,7 +12,6 @@ class PlacesController < ApplicationController
     place.position = 0
     respond_to do |format|
       if place.save
-        flash[:notice] = "追加しました"
         @places = Place.order(:position)
         @place = Place.new
         format.html { redirect_to root_path }
@@ -27,15 +26,29 @@ class PlacesController < ApplicationController
 
   def update
     place = Place.find(params[:id])
-    place.update(place_params)
-    redirect_to root_path
+    respond_to do |format|
+      if place.update(place_params)
+        @places = Place.order(:position)
+        @place = Place.new
+        format.html { redirect_to root_path }
+        format.js
+      end
+    end
   end
 
   def destroy
     place = Place.find(params[:id])
-    place.destroy
-    redirect_to root_path
+    respond_to do |format|
+      if place.destroy
+        @places = Place.order(:position)
+        @place = Place.new
+        format.html { redirect_to root_path }
+        format.js
+      end
+    end
+
   end
+
   private
   def place_params
     params.require(:place).permit(:name)
