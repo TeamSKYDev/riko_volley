@@ -19,9 +19,9 @@
   label
     | 練習日程
   = f.fields_for :exercises do |e|
-    = render 'exercise_form', f: e
+    = render 'exercise_fields', f: e
+
   .links
     = link_to_add_association "+日程の追加", f, :exercises
-
 
   = f.submit('投稿', class: 'btn btn-primary')

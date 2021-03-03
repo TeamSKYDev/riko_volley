@@ -68,7 +68,8 @@ gem 'dotenv-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
 gem 'slim-rails'
-gem 'html2slim'
+
+gem 'cocoon'
 
 gem 'pry-byebug'
 
