@@ -22,6 +22,6 @@
     = render 'exercise_fields', f: e
 
   .links
-    = link_to_add_association "+日程の追加", f, :exercises
+    = link_to_add_association " 日程の追加", f, :exercises, class: "fas fa-plus text-info text-decoration-none"
 
-  = f.submit('投稿', class: 'btn btn-primary')
+  = f.submit '投稿', class: 'btn btn-primary mt-4'
