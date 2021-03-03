@@ -1,11 +1,14 @@
 - if user_signed_in?
-  = render "tab"
-  .tab-content.mt-4
-    #post.tab-pane.active
-      = render "form", post: @post
-    #place.tab-pane
+  #admin_menu.mb-4
+    = render "tab"
+    .tab-content.p-5.border.border-secondary.border-top-0 style= "min-height:300px;"
+      #post.tab-pane.active
+        = render "form", post: @post
+      #place.tab-pane
+        = render "places/index", places: @places, place: @place
+      #notification.tab-pane
+        = render "notifications/index", notification: @notification
 
-    #notification.tab-pane
-
-h2
-  | index
+#visitor_menu
+  h2
+    | index

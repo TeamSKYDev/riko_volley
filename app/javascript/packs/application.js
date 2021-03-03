@@ -23,3 +23,24 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
+// 並び替え用
+require("jquery-ui/ui/widget")
+require("jquery-ui/ui/widgets/sortable")
+
+$(document).on("turbolinks:load", () => {
+  $("#places").sortable({
+    handle: '.handle',
+    update: function(e, ui) {
+      Rails.ajax({
+        url: $(this).data("url"),
+        type: "PATCH",
+        data: $(this).sortable('serialize'),
+      });
+    }
+  });
+})
+
+// viewでjquery
+window.$ = jQuery;
+
