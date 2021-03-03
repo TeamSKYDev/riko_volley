@@ -1,0 +1,32 @@
+= form_with model: notification, local: false do |f|
+  .container
+    .row.form-group.mb-4
+      .col-3.offset-1
+        = f.label :status, "リマインダー", class: "form-label"
+
+      .col-4.btn-group.btn-group-toggle data-toggle="buttons"
+        label.btn.btn-outline-info.active style="width:50%"
+          = f.radio_button :status, true
+          | ON
+
+        label.btn.btn-outline-secondary style="width:50%"
+          = f.radio_button :status, false
+          | OFF
+      .col-4
+
+
+
+    .row.form-group.mb-5
+      .col-3.offset-1
+        = f.label :status, "日にち設定", class: "form-label"
+
+      .col-2
+        = f.number_field(:days_before, min: 0, class: "form-control")
+
+      .col-6
+       | 日前にLineでお知らせ
+
+
+    .row.action
+      .col-2.offset-10
+        = f.submit "保存", class: "btn btn-primary form-control"

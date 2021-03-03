@@ -3,9 +3,7 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
+
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -18,8 +16,30 @@ window.toastr = toastr;
 require('jquery')
 import "cocoon";
 
+// viewでjquery
+window.$ = jQuery;
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+// 並び替え用
+require("jquery-ui/ui/widget")
+require("jquery-ui/ui/widgets/sortable")
+
+$(document).on("turbolinks:load", () => {
+  $("#places").sortable({
+    handle: '.handle',
+    update: function(e, ui) {
+      Rails.ajax({
+        url: $(this).data("url"),
+        type: "PATCH",
+        data: $(this).sortable('serialize'),
+      });
+    }
+  });
+})
+
+
 

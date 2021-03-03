@@ -7,8 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(
-  email: "a@a",
-  password: "aaaaaa"
+  [
+    {
+      email: "a@a",
+      password: "aaaaaa"
+    },
+    {
+      email: "b@b",
+      password: "bbbbbb",
+      is_admin: true
+    }
 )
 
 Omake.create(
@@ -46,16 +54,16 @@ Notification.create(
 Place.create(
   [
     {
-      id: 1,
-      name: "大久保小"
+      name: "大久保小",
+      position: 2
     },
     {
-      id: 2,
-      name: "戸塚第3小"
+      name: "戸塚第3小",
+      position: 3
     },
     {
-      id: 3,
-      name: "西戸山小"
+      name: "西戸山小",
+      position: 4
     }
   ]
 )

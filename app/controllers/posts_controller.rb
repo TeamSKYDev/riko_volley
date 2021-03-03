@@ -1,12 +1,16 @@
 class PostsController < ApplicationController
 
-  before_action :set_posts, only: %i[index]
-  before_action :set_post,  only: %i[index]
+  # before_action :set_posts, only: %i[index]
+  # before_action :set_post,  only: %i[index]
 
   def index
     @post = Post.new
     @post.exercises.build
+    @place = Place.new
+    @places = Place.order(:position)
+    @notification = Notification.first
   end
+
 
   def create
     @post = Post.new(post_params)
