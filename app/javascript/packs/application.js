@@ -15,6 +15,8 @@ import 'bootstrap';
 import '../stylesheets/application';
 import toastr from 'toastr';
 window.toastr = toastr;
+require('jquery')
+import "cocoon";
 
 
 Rails.start()

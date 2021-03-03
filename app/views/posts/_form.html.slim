@@ -1,12 +1,12 @@
-= form_with(model: post) do |f|
+= form_with(model: post, local: true) do |f|
   - if post.errors.any?
     #error_explanation
-      h2 
+      h2
         = pluralize(post.errors.count, 'error')
         | prohibited this user from being saved:
       ul
         - post.errors.full_messages.each do |message|
-          li      
+          li
             = message
   .form-group
     = f.label(:title, 'タイトル')
@@ -14,4 +14,14 @@
   .form-group
     = f.label(:body, '内容')
     = f.text_area(:body, class: 'form-control')
-  = f.submit('投稿', class: 'btn btn-primary')
+
+
+  label
+    | 練習日程
+  = f.fields_for :exercises do |e|
+    = render 'exercise_fields', f: e
+
+  .links
+    = link_to_add_association " 日程の追加", f, :exercises, class: "fas fa-plus text-info text-decoration-none"
+
+  = f.submit '投稿', class: 'btn btn-primary mt-4'

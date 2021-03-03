@@ -42,3 +42,20 @@ Notification.create(
   status: true,
   days_before: 1
 )
+
+Place.create(
+  [
+    {
+      id: 1,
+      name: "大久保小"
+    },
+    {
+      id: 2,
+      name: "戸塚第3小"
+    },
+    {
+      id: 3,
+      name: "西戸山小"
+    }
+  ]
+)

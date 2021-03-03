@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   root "home#top"
 
   resources :notifications, only: [:update]
-  resources :posts, only: %i[index]
+  resources :posts, only: %i[index create]
 end
