@@ -79,3 +79,5 @@ Rails.application.configure do
   # ngrok用。ngrok立ち上げるごと変更が必要。コンフリのときは消して問題なし
   config.hosts << "3b9b970ce1f9.ngrok.io"
 end
+
+BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
