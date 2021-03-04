@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_posts, only: %i[index]
-  before_action :set_post,  only: %i[index]
+  before_action :check_sign_in, only: %i[create destory]
+  before_action :set_posts,     only: %i[index]
+  before_action :set_post,      only: %i[index destroy]
 
   def index
     # @post = Post.new
@@ -19,9 +20,19 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def destroy
+    if @post.destroy
+      flash[:notice] = '投稿を削除しました。'
+      redirect_to posts_path
+    else
+      flash[:error] = '投稿の削除に失敗しました。'
+      redirect_to posts_path
+    end
+  end
+
   private
   def set_posts
-    @pagy, @posts = pagy(Post.all.includes(exercises: :place).order(id: :desc), items: 5)
+    @pagy, @posts = pagy(Post.all.includes([:user, exercises: :place]).order(id: :desc), items: 5)
   end
 
   def set_post
