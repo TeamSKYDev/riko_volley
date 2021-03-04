@@ -68,7 +68,8 @@ gem 'dotenv-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
 gem 'slim-rails'
-gem 'html2slim'
+
+gem 'cocoon'
 
 gem 'pry-byebug'
 
@@ -76,3 +77,4 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 gem 'pagy'
+gem "acts_as_list"
