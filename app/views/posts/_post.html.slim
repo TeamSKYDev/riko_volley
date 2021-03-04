@@ -1,9 +1,14 @@
 .card
   .card-body
-    .d-flex.flex-row
-      h5.card-title 
+    .d-flex.justify-content-between
+      h4.card-title 
         = post.title
       h6.card-subtitle.text-muted 
-        = post.created_at
+        | 投稿日: 
+        = post.created_at.strftime('%F %T')
     p.card-text 
       = post.body
+      h5.card_title 
+        | 練習日程
+      = render(partial: 'exercise_table', locals: { exercises: post.exercises } )
+hr

@@ -1,0 +1,22 @@
+table.table
+  thead
+    tr 
+      th scope='col'
+        | 日時
+      th scope='col'
+        | 開始時刻
+      th scope='col'
+        | 終了時刻
+      th scope='col'
+        | 場所
+  tbody 
+    - exercises.each do |exercise|
+      tr
+        td
+          = exercise.date
+        td
+          = exercise.start_time
+        td
+          = exercise.end_time
+        td
+          = exercise.place.name
