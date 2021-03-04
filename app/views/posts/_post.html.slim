@@ -14,6 +14,7 @@
         | 練習日程
       = render(partial: 'exercise_table', locals: { exercises: post.exercises } )
     .d-flex.flex-row-reverse
-      - if current_user.id == post.user.id 
-        = link_to('削除', post_path(post), method: :delete, class: 'btn btn-danger')
+      - if user_signed_in?
+        - if current_user.id == post.user.id 
+          = link_to('削除', post_path(post), method: :delete, class: 'btn btn-danger')
 hr
