@@ -11,4 +11,10 @@
 
 #visitor_menu
   h2
-    | index
+    | 投稿一覧
+  hr
+  = render(partial: 'post', collection: @posts, as: :post )
+
+- if @pagy.pages > 1
+  .d-flex.justify-content-center
+    == pagy_bootstrap_nav(@pagy)

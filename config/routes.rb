@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root "posts#index"
 
   resources :notifications, only: [:update]
-  resources :posts, only: %i[index create]
+  resources :posts, only: %i[index create destroy]
 
   resources :places, only: [:create, :edit, :update, :destroy] do
     collection do

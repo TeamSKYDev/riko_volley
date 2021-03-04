@@ -10,16 +10,16 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    / header
-    /   = render(partial: 'layouts/header')
-    header.navbar.navbar-dark.bg-dark style="height: 50px;"
-      .container
-        .row.navbar-nav.ml-auto
-          .nav-item.active
-            - if user_signed_in?
-              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link"
-            - else
-              = link_to "ログイン", new_user_session_path, class: "nav-link"
+    header
+      = render(partial: 'layouts/header')
+    / header.navbar.navbar-dark.bg-dark style="height: 50px;"
+    /   .container
+    /     .row.navbar-nav.ml-auto
+    /       .nav-item.active
+    /         - if user_signed_in?
+    /           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link"
+    /         - else
+    /           = link_to "ログイン", new_user_session_path, class: "nav-link"
 
     main
       .container
