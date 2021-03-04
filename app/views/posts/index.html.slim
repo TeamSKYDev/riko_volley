@@ -1,4 +1,8 @@
 - if user_signed_in?
-  = render(partial: 'form', locals: { post: @post })
+  = render(partial: 'form', locals: { post: @post } )
 
-- 
+= render(partial: 'post', collection: @posts, as: :post )
+
+- if @pagy.pages > 1
+  .d-flex.justify-content-center
+    == pagy_bootstrap_nav(@pagy)

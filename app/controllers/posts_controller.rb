@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include Pagy::Backend
 
   before_action :set_posts, only: %i[index]
   before_action :set_post,  only: %i[index]
@@ -9,7 +10,7 @@ class PostsController < ApplicationController
 
   private
   def set_posts
-    @posts = Post.all
+    @pagy, @posts = pagy(Post.all.order(id: :desc), items: 5)
   end
 
   def set_post

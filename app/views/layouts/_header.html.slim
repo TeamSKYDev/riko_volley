@@ -1,4 +1,4 @@
-nav.navbar.navbar-light.bg-light
+nav.navbar.navbar-dark.bg-dark
   = link_to('りこばれ掲示板', posts_path, class: 'navbar-brand')
   - if user_signed_in?
     = link_to('ログアウト', destroy_user_session_path, method: :delete, class: 'navbar-brand')

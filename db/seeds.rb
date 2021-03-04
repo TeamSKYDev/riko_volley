@@ -36,6 +36,11 @@ Omake.create(
   ]
 
 )
+Post.create( 
+  user_id: 1,
+  title: '8月の練習日程について（予定）',
+  body: '８月の練習日程についてお知らせします。現状の予定なのでこれから中止になる可能性あります。'
+)
 
 Notification.create(
   id: 1,
