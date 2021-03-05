@@ -19,4 +19,7 @@ table.table
         td
           = exercise.end_time
         td
-          = exercise.place.name
+          - if exercise.place.present?
+            = exercise.place.name
+          - else
+            | (削除されています)

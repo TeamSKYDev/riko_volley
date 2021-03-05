@@ -2,5 +2,5 @@
   = f.datetime_select :started_at
   | ~
   = f.time_select :ended_at
-  = f.collection_select(:place_id, Place.order(:position), :id, :name)
-  = link_to_remove_association '', f, class: "far fa-times-circle ml-2 text-danger text-decoration-none"
+  = f.collection_select(:place_id, @places, :id, :name)
+  = link_to_remove_association '', f, class: "far fa-times-circle ml-2 text-danger text-decoration-none" 

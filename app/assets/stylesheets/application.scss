@@ -17,7 +17,7 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
- .ui-sortable-handle{
+.ui-sortable-handle{
   cursor: pointer;
 }
 
@@ -25,8 +25,8 @@
   ul{
     .active {
       background-color: #fffcf9;
+      border-bottom-color: #fffcf9;
       font-weight: bold;
     }
   }
-
- }
+}

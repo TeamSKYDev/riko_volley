@@ -1,15 +1,15 @@
 class PostsController < ApplicationController
   include Pagy::Backend
 
-  before_action :check_sign_in, only: %i[create destory]
-  before_action :set_posts,     only: %i[index edit]
-  before_action :set_post,      only: %i[index destroy edit update]
-  before_action :set_place_notification, only: [:index, :edit]
+  before_action :check_sign_in,          only: %i[create edit update destory]
+  before_action :set_post,               only: %i[index destroy edit update]
+  before_action :check_user,             only: %i[edit update]
+  before_action :set_posts,              only: %i[index edit]
+  before_action :set_place_notification, only: %i[index edit]
 
   def index
     @post.exercises.build
   end
-
 
   def create
     @post = Post.new(post_params)
@@ -27,9 +27,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    render "index"
-  end
+  def edit; end
 
   def update
     @post.update!(post_params)
@@ -49,6 +47,12 @@ class PostsController < ApplicationController
     @place = Place.new
     @places = Place.order(:position)
     @notification = Notification.first
+  end
+
+  def check_user
+    if current_user != @post.user
+      redirect_to posts_path
+    end
   end
 
   def post_params
