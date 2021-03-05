@@ -1,7 +1,7 @@
 - if user_signed_in?
   #admin_menu.mb-4
     = render "tab"
-    .tab-content.p-5.border.border-secondary.border-top-0 style= "min-height:300px;"
+    .tab-content.p-5.border.border-secondary.border-top-0 style= "min-height:300px; background-color: #fffcf9;"
       #post.tab-pane.fade.show.active
         = render "form", post: @post
       #place.tab-pane.fade

@@ -24,5 +24,7 @@
   .links
     = link_to_add_association " 日程の追加", f, :exercises, class: "fas fa-plus text-info text-decoration-none"
 
-  .action.text-right
-    = f.submit '投稿', class: 'btn btn-primary mt-4'
+  .container
+    .row.action
+        .col-2.offset-10
+          = f.submit "投稿", class: "btn btn-primary form-control"
