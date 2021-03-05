@@ -17,6 +17,7 @@ User.create(
       password: "bbbbbb",
       is_admin: true
     }
+  ]
 )
 
 Omake.create(

@@ -54,4 +54,16 @@ class Exercise < ApplicationRecord
     end
     return response
   end
+
+  def date
+    started_at.strftime('%F')
+  end
+
+  def start_time
+    started_at.strftime('%R')
+  end
+
+  def end_time
+    ended_at.strftime('%R')
+  end
 end

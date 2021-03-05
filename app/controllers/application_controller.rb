@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
     posts_path
   end
 
+  def check_sign_in
+    if !user_signed_in?
+      redirect_to posts_path
+    end
+  end
   private
   # botアカウント(クライアント)設定
   def client
