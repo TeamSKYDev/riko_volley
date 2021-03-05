@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   before_action :set_posts,     only: %i[index edit]
   before_action :set_post,      only: %i[index destroy edit update]
   before_action :set_place_notification, only: [:index, :edit]
+  before_action :reset_cookie, onlu: [:update]
 
   def index
     @post.exercises.build
@@ -34,6 +35,9 @@ class PostsController < ApplicationController
   def update
     @post.update!(post_params)
     redirect_to posts_path
+  end
+
+  def reset_cookie
   end
 
   private

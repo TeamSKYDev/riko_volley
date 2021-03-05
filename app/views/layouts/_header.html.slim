@@ -6,6 +6,6 @@ nav.navbar.navbar-dark.bg-dark
     .navbar-nav.ml-auto
       .nav-item
         - if user_signed_in?
-          = link_to(' ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link fas fa-clipboard-check text-light')
+          = link_to(' ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link fas fa-share-square text-light')
         - else
           = link_to(' ログイン', new_user_session_path, class: 'nav-link fas fa-user-lock text-light')

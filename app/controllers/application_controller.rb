@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
       redirect_to posts_path
     end
   end
+
   private
   # botアカウント(クライアント)設定
   def client
