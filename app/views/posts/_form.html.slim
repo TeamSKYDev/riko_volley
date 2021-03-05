@@ -18,8 +18,14 @@
 
   label
     | 練習日程
-  = f.fields_for :exercises do |e|
-    = render 'exercise_fields',  f: e
+  
+  = f.fields_for :exercises do |exercise|
+    .nested-fields.mb-2
+      = exercise.datetime_select :started_at
+      | ~
+      = exercise.time_select :ended_at
+      = exercise.collection_select(:place_id, places, :id, :name)
+      = link_to_remove_association '', exercise, class: "far fa-times-circle ml-2 text-danger text-decoration-none"
 
   .links
     = link_to_add_association " 日程の追加", f, :exercises, class: "fas fa-plus text-info text-decoration-none"
