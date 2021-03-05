@@ -7,16 +7,18 @@
         table.table.table-hover
           tbody#places data-url="#{sort_places_path}"
             - places.each do |place|
-              = content_tag :tr, id: dom_id(place), class: dom_class(place) do 
+              = content_tag :tr, id: dom_id(place), class: dom_class(place) do
                 td.handle
                   i.fas.fa-th
                 td
-                  = link_to place.name, edit_place_path(place), remote: true
+                  = place.name
+                td
+                  = link_to "削除", place_path(place), method: :delete
 
     .col-6.offset-1
       h4
         | 新規追加
-      = form_with(model: place, local: false) do |f|
+      = form_with(model: place, local: true) do |f|
         .input-group
           = f.text_field :name, placeholder: "場所名", class: "form-control place-form"
           .input-group-append

@@ -13,6 +13,7 @@ import 'bootstrap';
 import '../stylesheets/application';
 import toastr from 'toastr';
 window.toastr = toastr;
+
 require('jquery')
 import "cocoon";
 
@@ -43,3 +44,22 @@ $(document).on("turbolinks:load", () => {
 
 
 
+window.Cookies = require("js-cookie")
+
+$(document).on('turbolinks:load', function() {
+  $(function() {
+    if(Cookies.get("openTag")){
+    //一旦すべての active を外す
+    $('a[data-toggle="tab"]').parent().removeClass('active');
+    $('a[href="#' + Cookies.get("openTag") +'"]').click();
+    }
+
+    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+    var tabName = e.target.href;
+    var items = tabName.split("#");
+    //クッキーに選択されたタブを記憶
+    Cookies.set("openTag",items[1], { expires: 700 });
+    console.log("処理2")
+    });
+  });
+});
