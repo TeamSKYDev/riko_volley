@@ -46,6 +46,7 @@ $(document).on("turbolinks:load", () => {
 
 window.Cookies = require("js-cookie")
 
+// tabメニューcookieの設定
 $(document).on('turbolinks:load', function() {
   $(function() {
     if(Cookies.get("openTag")){
@@ -58,7 +59,17 @@ $(document).on('turbolinks:load', function() {
     var tabName = e.target.href;
     var items = tabName.split("#");
     //クッキーに選択されたタブを記憶
-    Cookies.set("openTag",items[1], { expires: 700 });
+    Cookies.set("openTag",items[1], { expires: 1/24 });
     });
   });
 });
+
+// cookieの削除
+$(document).on('turbolinks:load', function() {
+  $(".reset-cookie-button").on('click', function() {
+    if(Cookies.get("openTag")){
+      Cookies.remove("openTag");
+    }
+  });
+});
+

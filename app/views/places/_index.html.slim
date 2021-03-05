@@ -1,7 +1,7 @@
 .container
   .row
     .col-5
-      h4
+      h4.mb-3
         | 並び替え
       .place-index.overflow-auto style="height: 400px;"
         table.table.table-hover.border-bottom style="background-color: #fff7ef;"
@@ -9,14 +9,14 @@
             - places.each do |place|
               = content_tag :tr, id: dom_id(place), class: dom_class(place) do
                 td.handle
-                  i.fas.fa-th
+                  i.fas.fa-th.text-secondary
                 td
                   = place.name
                 td
-                  = link_to "削除", place_path(place), method: :delete
+                  = link_to "削除", place_path(place), method: :delete, class: "text-danger"
 
     .col-6.offset-1
-      h4
+      h4.mb-3
         | 新規追加
       = form_with(model: place, local: true) do |f|
         .input-group

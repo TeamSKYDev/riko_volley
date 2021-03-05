@@ -8,7 +8,9 @@ class PostsController < ApplicationController
   before_action :set_place_notification, only: %i[index edit]
 
   def index
-    @post.exercises.build
+    started_at = Time.zone.parse("18:00:00")
+    ended_at = Time.zone.parse("21:00:00")
+    @post.exercises.build(started_at: started_at.to_datetime, ended_at: ended_at)
   end
 
   def create
@@ -33,6 +35,7 @@ class PostsController < ApplicationController
     @post.update!(post_params)
     redirect_to posts_path
   end
+
 
   private
   def set_posts
