@@ -1,11 +1,11 @@
-= form_with model: notification, local: false do |f|
+= form_with model: notification do |f|
   .container
     .row.form-group.mb-4
       .col-3.offset-1
         = f.label :status, "リマインダー", class: "form-label"
 
       .col-4.btn-group.btn-group-toggle data-toggle="buttons"
-        label.btn.btn-outline-info.active style="width:50%"
+        label.btn.btn-outline-info style="width:50%"
           = f.radio_button :status, true
           | ON
 

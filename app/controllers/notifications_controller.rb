@@ -2,12 +2,8 @@ class NotificationsController < ApplicationController
 
   def update
     @notification = Notification.first
-    respond_to do |format|
-      if @notification.update(notification_params)
-        format.html { redirect_to root_path }
-        format.js
-      end
-    end
+    @notification.update(notification_params)
+    redirect_to root_path
 
   end
 

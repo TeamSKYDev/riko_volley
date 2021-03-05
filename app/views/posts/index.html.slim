@@ -2,11 +2,11 @@
   #admin_menu.mb-4
     = render "tab"
     .tab-content.p-5.border.border-secondary.border-top-0 style= "min-height:300px;"
-      #post.tab-pane.active
+      #post.tab-pane.fade.show.active
         = render "form", post: @post
-      #place.tab-pane
+      #place.tab-pane.fade
         = render "places/index", places: @places, place: @place
-      #notification.tab-pane
+      #notification.tab-pane.fade
         = render "notifications/index", notification: @notification
 
 #visitor_menu

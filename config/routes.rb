@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:update]
   resources :posts, only: %i[index create destroy]
 
-  resources :places, only: [:create, :edit, :update, :destroy] do
+  resources :places, only: [:create, :destroy] do
     collection do
       patch :sort
     end
