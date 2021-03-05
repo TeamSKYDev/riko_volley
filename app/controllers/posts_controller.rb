@@ -5,10 +5,11 @@ class PostsController < ApplicationController
   before_action :set_posts,     only: %i[index edit]
   before_action :set_post,      only: %i[index destroy edit update]
   before_action :set_place_notification, only: [:index, :edit]
-  before_action :reset_cookie, onlu: [:update]
 
   def index
-    @post.exercises.build
+    started_at = Time.zone.parse("18:00:00")
+    ended_at = Time.zone.parse("21:00:00")
+    @post.exercises.build(started_at: started_at.to_datetime, ended_at: ended_at)
   end
 
 
@@ -37,8 +38,6 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  def reset_cookie
-  end
 
   private
   def set_posts
