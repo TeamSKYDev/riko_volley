@@ -59,7 +59,6 @@ $(document).on('turbolinks:load', function() {
     var items = tabName.split("#");
     //クッキーに選択されたタブを記憶
     Cookies.set("openTag",items[1], { expires: 700 });
-    console.log("処理2")
     });
   });
 });

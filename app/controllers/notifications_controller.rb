@@ -2,9 +2,10 @@ class NotificationsController < ApplicationController
 
   def update
     @notification = Notification.first
-    @notification.update(notification_params)
-    redirect_to root_path
-
+    if @notification.update(notification_params)
+      flash[:notice] = "保存しました"
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   private

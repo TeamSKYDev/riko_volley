@@ -4,7 +4,7 @@
       h4
         | 並び替え
       .place-index.overflow-auto style="height: 400px;"
-        table.table.table-hover
+        table.table.table-hover.border-bottom style="background-color: #fff7ef;"
           tbody#places data-url="#{sort_places_path}"
             - places.each do |place|
               = content_tag :tr, id: dom_id(place), class: dom_class(place) do

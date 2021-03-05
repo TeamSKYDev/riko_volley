@@ -20,3 +20,13 @@
  .ui-sortable-handle{
   cursor: pointer;
 }
+
+#admin_menu {
+  ul{
+    .active {
+      background-color: #fffcf9;
+      font-weight: bold;
+    }
+  }
+
+ }

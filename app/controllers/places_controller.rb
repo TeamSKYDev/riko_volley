@@ -15,7 +15,7 @@ class PlacesController < ApplicationController
     else
       flash[:error] = "エラー"
     end
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -25,7 +25,7 @@ class PlacesController < ApplicationController
     else
       flash[:error] = "エラー"
     end
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
 
   end
 
