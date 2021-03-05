@@ -1,8 +1,11 @@
 nav.navbar.navbar-dark.bg-dark
-  br
-  = link_to('りこばれ掲示板', posts_path, class: 'navbar-brand')
-  - if user_signed_in?
-    = link_to('ログアウト', destroy_user_session_path, method: :delete, class: 'navbar-brand')
-  - else
-    = link_to('ログイン', new_user_session_path, class: 'navbar-brand')
-        
+  .container
+    = link_to(' りこばれ掲示板', posts_path, class: 'navbar-brand fas fa-volleyball-ball')
+
+
+    .navbar-nav.ml-auto
+      .nav-item
+        - if user_signed_in?
+          = link_to(' ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link fas fa-clipboard-check text-light')
+        - else
+          = link_to(' ログイン', new_user_session_path, class: 'nav-link fas fa-user-lock text-light')
