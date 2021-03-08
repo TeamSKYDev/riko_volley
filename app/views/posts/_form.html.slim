@@ -1,5 +1,5 @@
 = form_with(model: post, local: true) do |f|
-  = render "layouts/errors", post: post
+  = render "layouts/errors", obj: post
 
   .form-group
     = f.label(:title, 'タイトル')

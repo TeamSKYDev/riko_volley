@@ -1,9 +1,9 @@
-- if post.errors.any?
+- if obj.errors.any?
     #error_explanation
       h5
         | エラーがあります
 
       ul
-        - post.errors.full_messages.each do |message|
+        - obj.errors.full_messages.each do |message|
           li
             = message

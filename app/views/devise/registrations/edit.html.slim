@@ -1,7 +1,7 @@
 h2
   | アカウント編集
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
+  = render "layouts/errors", obj: resource
   .field.mt-3
     = f.label :email
     br
@@ -29,6 +29,6 @@ h2
     br
     = f.password_field :current_password, autocomplete: "current-password"
   .actions.mt-4
-    = f.submit "Update", class: "btn btn-outline-secondary mr-3 reset-cookie-button"
+    = f.submit "　更新　", class: "btn btn-outline-secondary mr-3 reset-cookie-button"
     = link_to "　戻る　", posts_path, class: "btn btn-primary reset-cookie-button", data: {"turbolinks" => false}
 
