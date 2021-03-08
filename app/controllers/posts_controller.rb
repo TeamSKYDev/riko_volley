@@ -2,48 +2,57 @@ class PostsController < ApplicationController
   include Pagy::Backend
 
   before_action :check_sign_in,          only: %i[create edit update destory]
-  before_action :set_post,               only: %i[index destroy edit update]
+  before_action :set_post,               only: %i[index create destroy edit update]
   before_action :check_user,             only: %i[edit update]
-  before_action :set_posts,              only: %i[index edit]
-  before_action :set_place_notification, only: %i[index edit]
+  before_action :set_posts,              only: %i[index create edit]
+  before_action :set_place_notification, only: %i[index create edit]
 
   def index
-    started_at = Time.zone.parse("18:00:00")
-    ended_at = Time.zone.parse("21:00:00")
-    @post.exercises.build(started_at: started_at.to_datetime, ended_at: ended_at)
   end
 
   def create
     @post = Post.new(post_params)
-    @post.save!
-    redirect_to posts_path
+    if @post.save
+      flash[:notice] = "投稿完了"
+      redirect_to posts_path
+    else
+      render "index"
+    end
   end
 
   def destroy
     if @post.destroy
-      flash[:notice] = '投稿を削除しました。'
-      redirect_to posts_path
+      flash[:notice] = '削除完了'
     else
-      flash[:error] = '投稿の削除に失敗しました。'
-      redirect_to posts_path
+      flash[:error] = 'エラー'
     end
+    redirect_to posts_path
   end
 
   def edit; end
 
   def update
-    @post.update!(post_params)
-    redirect_to posts_path
+    if @post.update(post_params)
+      flash[:notice] = "編集完了"
+      redirect_to posts_path
+    else
+      render "edit"
+    end
   end
 
 
   private
   def set_posts
-    @pagy, @posts = pagy(Post.all.includes([:user, exercises: :place]).order(id: :desc), items: 5)
+    @pagy, @posts = pagy(Post.all.includes([:user]).order(id: :desc), items: 5)
   end
 
   def set_post
     @post = Post.find_or_initialize_by(id: params[:id])
+    if @post.id.blank?
+      started_at = Time.zone.parse(Date.current.next_month.beginning_of_month.to_s + " 18:00:00").to_datetime
+      ended_at = Time.zone.parse("21:00:00")
+      @post.exercises.build(started_at: started_at, ended_at: ended_at)
+    end
   end
 
   def set_place_notification
@@ -59,6 +68,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id, exercises_attributes: [:id, :place_id, :started_at, :ended_at, :_destroy]).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :body, :user_id, exercises_attributes: [:id, :place_name, :started_at, :ended_at, :_destroy]).merge(user_id: current_user.id)
   end
 end

@@ -1,6 +1,5 @@
 class Exercise < ApplicationRecord
   belongs_to :post
-  belongs_to :place
 
   def self.search_for(schedule)
     if schedule.include?("今日")
@@ -27,12 +26,12 @@ class Exercise < ApplicationRecord
   end
 
   def self.set_response(schedule)
-    response = schedule + "の予定は　\n"
+    response = schedule + "の予定は"
     self.all.each do |exercise|
-      response = response + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place.name + "\n"
+      response = response + "\n" + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place.name
     end
 
-    response = response + "です！"
+    response = response + "\nです！"
     return response
   end
 
@@ -48,9 +47,9 @@ class Exercise < ApplicationRecord
     else
       display_day = setting_day.to_s + "日後に"
     end
-    response =  display_day + "りこばれがあります！　\n"
+    response =  display_day + "りこばれがあります！"
     self.all.each do |exercise|
-      response = response + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place.name + "\n"
+      response = response + "\n" + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place.name
     end
     return response
   end

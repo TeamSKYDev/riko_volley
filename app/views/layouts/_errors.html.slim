@@ -1,0 +1,9 @@
+- if post.errors.any?
+    #error_explanation
+      h5
+        | エラーがあります
+
+      ul
+        - post.errors.full_messages.each do |message|
+          li
+            = message

@@ -1,23 +1,24 @@
 .card.shadow
   .card-body
     .d-flex.justify-content-between
-      h4.card-title 
+      h4.card-title
         = post.title
       div.d-flex
-        h6.card-subtitle.text-muted 
-          | 投稿日: 
+        h6.card-subtitle.text-muted
+          | 投稿日:
           = post.created_at.strftime('%F %T')
           - unless post.created_at == post.updated_at
             br
             | (編集済み)
-    p.card-text 
+    p.card-text
       = post.body
-      h5.card_title 
-        | 練習日程
-      = render(partial: 'exercise_table', locals: { exercises: post.exercises } )
+      - if post.exercises.present?
+        h5.card_title
+          | 練習日程
+        = render(partial: 'exercise_table', locals: { exercises: post.exercises } )
     .text-right
       - if user_signed_in?
         - if current_user.id == post.user.id
           = link_to('編集', edit_post_path(post), class: 'btn btn-primary mr-2 reset-cookie-button')
-          = link_to('削除', post_path(post), method: :delete, class: 'btn btn-danger reset-cookie-button')
+          = link_to('削除', post_path(post), method: :delete, class: 'btn btn-danger reset-cookie-button', data: { confirm: '削除してよろしいですか？'})
 hr
