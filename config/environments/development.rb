@@ -77,7 +77,7 @@ Rails.application.configure do
   config.reload_classes_only_on_change = false
 
   # ngrok用。ngrok立ち上げるごと変更が必要。コンフリのときは消して問題なし
-  config.hosts << "80339f5dafa2.ngrok.io"
+  config.hosts << "3fd873bb41e3.ngrok.io"
 end
 
 BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
