@@ -19,6 +19,6 @@
     .text-right
       - if user_signed_in?
         - if current_user.id == post.user.id
-          = link_to('編集', edit_post_path(post), class: 'btn btn-primary mr-2 reset-cookie-button')
-          = link_to('削除', post_path(post), method: :delete, class: 'btn btn-danger reset-cookie-button', data: { confirm: '削除してよろしいですか？'})
+          = link_to('編集', edit_post_path(post), class: 'btn btn-primary mr-2 reset-cookie-button', data: {"turbolinks" => false})
+          = link_to('削除', post_path(post), method: :delete, class: 'btn btn-danger reset-cookie-button', data: { confirm: '削除してよろしいですか？', "turbolinks" => false})
 hr

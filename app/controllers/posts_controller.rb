@@ -14,6 +14,12 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       flash[:notice] = "投稿完了"
+      message = {
+        type: 'text',
+        text: @post.create_message
+      }
+      client.broadcast(message)
+
       redirect_to posts_path
     else
       render "index"
@@ -34,6 +40,11 @@ class PostsController < ApplicationController
   def update
     if @post.update(post_params)
       flash[:notice] = "編集完了"
+      message = {
+        type: 'text',
+        text: "「" + @post.title + "」に変更がありました！\nURLから確認してください！"
+      }
+      client.broadcast(message)
       redirect_to posts_path
     else
       render "edit"
@@ -48,9 +59,14 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find_or_initialize_by(id: params[:id])
+
+    # 初期値設定
+    started_at = Time.zone.parse(Date.current.next_month.beginning_of_month.to_s + " 18:00:00").to_datetime
+    ended_at = Time.zone.parse("21:00:00")
+    # cocoonで使用
+    @wrap_obj = Proc.new { |exercise| exercise.started_at = started_at; exercise.ended_at = ended_at; exercise }
+
     if @post.id.blank?
-      started_at = Time.zone.parse(Date.current.next_month.beginning_of_month.to_s + " 18:00:00").to_datetime
-      ended_at = Time.zone.parse("21:00:00")
       @post.exercises.build(started_at: started_at, ended_at: ended_at)
     end
   end

@@ -3,22 +3,22 @@ class Exercise < ApplicationRecord
 
   def self.search_for(schedule)
     if schedule.include?("今日")
-      exercises = Exercise.where(started_at: Date.today.all_day)
+      exercises = Exercise.where(started_at: DateTime.current.all_day)
       schedule_text = "今日"
     elsif schedule.include?("明日")
-      exercises = Exercise.where(started_at: Date.tomorrow.all_day)
+      exercises = Exercise.where(started_at: DateTime.current.tomorrow.all_day)
       schedule_text = "明日"
     elsif schedule.include?("今週")
-      exercises = Exercise.where(started_at: Date.today.all_week)
+      exercises = Exercise.where(started_at: DateTime.current.all_week)
       schedule_text = "今週"
     elsif schedule.include?("来週")
-      exercises = Exercise.where(started_at: Date.today.next_week.all_week)
+      exercises = Exercise.where(started_at: DateTime.current.next_week.all_week)
       schedule_text = "来週"
     elsif schedule.include?("今月")
-      exercises = Exercise.where(started_at: Date.today.all_month)
+      exercises = Exercise.where(started_at: DateTime.current.all_month)
       schedule_text = "今月"
     elsif schedule.include?("来月")
-      exercises = Exercise.where(started_at: Date.today.next_month.all_month)
+      exercises = Exercise.where(started_at: DateTime.current.next_month.all_month)
       schedule_text = "来月"
     end
 
@@ -28,7 +28,7 @@ class Exercise < ApplicationRecord
   def self.set_response(schedule)
     response = schedule + "の予定は"
     self.all.each do |exercise|
-      response = response + "\n" + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place.name
+      response = response + "\n" + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place_name
     end
 
     response = response + "\nです！"
@@ -36,7 +36,7 @@ class Exercise < ApplicationRecord
   end
 
   def self.search_for_days_after(setting_day)
-    Exercise.where(started_at: Date.today.since(setting_day.days).all_day)
+    Exercise.where(started_at: DateTime.today.since(setting_day.days).all_day)
   end
 
   def self.set_notification(setting_day)
@@ -49,7 +49,7 @@ class Exercise < ApplicationRecord
     end
     response =  display_day + "りこばれがあります！"
     self.all.each do |exercise|
-      response = response + "\n" + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place.name
+      response = response + "\n" + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place_name
     end
     return response
   end

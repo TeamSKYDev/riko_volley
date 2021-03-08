@@ -2,7 +2,7 @@
   = render "tab"
   .tab-content.p-5.border-right.border-bottom.border-left style= "min-height:300px; background-color: #fffcf9;"
     #post.tab-pane.fade.show.active
-      = render "form", post: post, places: places
+      = render "form", post: post, places: places, wrap_obj: wrap_obj
     #place.tab-pane.fade
       = render "places/index", places: places, place: place
     #notification.tab-pane.fade
