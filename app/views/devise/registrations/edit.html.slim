@@ -1,42 +1,34 @@
 h2
-  | Edit 
-  = resource_name.to_s.humanize
+  | アカウント編集
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = render "devise/shared/error_messages", resource: resource
-  .field
+  .field.mt-3
     = f.label :email
-  br
-  = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      | Currently waiting confirmation for: 
-      = resource.unconfirmed_email
-  .field
+    br
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+
+  .field.mt-3
     = f.label :password
     i
-      | (leave blank if you don't want to change it)
-  br
-  = f.password_field :password, autocomplete: "new-password"
-  - if @minimum_password_length
+      | 　＊変更しない場合には空欄にしてください
     br
-    em
-      = @minimum_password_length
-      |  characters minimum
-  .field
+    = f.password_field :password, autocomplete: "new-password"
+      - if @minimum_password_length
+        br
+        em
+          = @minimum_password_length
+          |  characters minimum
+  .field.mt-3
     = f.label :password_confirmation
-  br
-  = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
+    br
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .field.mt-3
     = f.label :current_password
-    i
-      | (we need your current password to confirm your changes)
-  br
-  = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-h3
-  | Cancel my account
-p
-  | Unhappy? 
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+    i.text-danger
+      | 　＊変更には現在のパスワードが必要です
+    br
+    = f.password_field :current_password, autocomplete: "current-password"
+  .actions.mt-4
+    = f.submit "Update", class: "btn btn-outline-secondary mr-3 reset-cookie-button"
+    = link_to "　戻る　", posts_path, class: "btn btn-primary reset-cookie-button", data: {"turbolinks" => false}
+
