@@ -4,14 +4,14 @@
       h4.card-title
         = post.title
       div.d-flex
-        h6.card-subtitle.text-muted
+        h6.card-subtitle.text-muted.text-right
           | 投稿日:
-          = post.created_at.strftime('%F %T')
+          = post.created_at.strftime('%F %H:%M')
           - unless post.created_at == post.updated_at
             br
             | (編集済み)
     p.card-text
-      = post.body
+      = simple_format(post.body)
       - if post.exercises.present?
         h5.card_title
           | 練習日程
