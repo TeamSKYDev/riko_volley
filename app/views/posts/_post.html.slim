@@ -6,7 +6,7 @@
       div.d-flex
         h6.card-subtitle.text-muted.text-right
           | 投稿日:
-          = post.created_at.strftime('%F %H:%M')
+          = post.created_at.strftime("%F (#{I18n.t('date.abbr_day_names')[post.created_at.wday]}) %H:%M")
           - unless post.created_at == post.updated_at
             br
             | (編集済み)
