@@ -2,10 +2,13 @@ nav.navbar.navbar-dark.bg-dark
   .container
     = link_to(' りこばれ掲示板', posts_path, class: 'navbar-brand fas fa-volleyball-ball reset-cookie-button', data: {"turbolinks" => false})
 
-
-    .navbar-nav.ml-auto
-      .nav-item
-        - if user_signed_in?
+    ul.nav.ml-auto
+      - if user_signed_in?
+        -if current_user.is_admin == true
+          li.nav-item
+            = link_to " 管理者", users_path, class: "nav-link fab fa-sketch text-light"
+        li.nav-item
           = link_to(' ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link fas fa-share-square text-light')
-        - else
-          = link_to(' ログイン', new_user_session_path, class: 'nav-link fas fa-user-lock text-light')
+      - else
+        li.nav-item
+          = link_to(' ログイン', new_user_session_path, class: 'nav-link text-light fas fa-user-lock')

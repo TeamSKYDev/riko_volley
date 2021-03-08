@@ -1,0 +1,28 @@
+.row
+  .col-8
+    .user_index
+      h4
+        | ユーザー一覧
+
+      table.table.mt-3
+        thead
+          tr
+            th
+              | email
+            th
+              | is_admin
+            th
+        tbody
+          - @users.each do |user|
+            tr
+              td
+                = user.email
+              td
+                = user.is_admin
+              td
+                - unless user == current_user
+                  = link_to "削除", user_path(user), method: :delete, class: "text-danger", data: {confirm: "削除しますか？"}
+  .col-3.offset-1
+    .user_create
+      = render "new", user: @user
+

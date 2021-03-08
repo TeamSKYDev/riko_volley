@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    sessions: "users/sessions"
+  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   post "/callback" => "linebot#callback"
   root "posts#index"
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
     collection do
       patch :sort
     end
-
   end
+
+  resources :users, only: [:index, :create, :edit, :destroy]
 end
