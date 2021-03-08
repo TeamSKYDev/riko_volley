@@ -28,7 +28,7 @@ class Exercise < ApplicationRecord
   def self.set_response(schedule)
     response = schedule + "の予定は"
     self.all.each do |exercise|
-      response = response + "\n" + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place_name
+      response = response + "\n" + exercise.started_at.strftime("%m/%d(#{I18n.t('date.abbr_day_names')[exercise.started_at.wday]}) %H:%M") + "~ @" + exercise.place_name
     end
 
     response = response + "\nです！"
@@ -49,7 +49,7 @@ class Exercise < ApplicationRecord
     end
     response =  display_day + "りこばれがあります！"
     self.all.each do |exercise|
-      response = response + "\n" + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place_name
+      response = response + "\n" + exercise.started_at.strftime("%m/%d(#{I18n.t('date.abbr_day_names')[exercise.started_at.wday]}) %H:%M") + "~ @" + exercise.place_name
     end
     return response
   end

@@ -13,7 +13,7 @@ table.table
     - exercises.each do |exercise|
       tr
         td
-          = exercise.date
+          = l exercise.date.to_date, format: :short
         td
           = exercise.start_time
         td
