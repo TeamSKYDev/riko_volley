@@ -16,7 +16,7 @@
     = render 'exercise_fields',  f: e
 
   .links
-    = link_to_add_association " 日程の追加", f, :exercises, class: "fas fa-plus text-info text-decoration-none"
+    = link_to_add_association(" 日程の追加", f, :exercises, wrap_object: wrap_obj, class: "fas fa-plus text-info text-decoration-none")
 
   .container
     .row.action
