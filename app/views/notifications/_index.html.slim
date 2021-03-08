@@ -6,11 +6,11 @@
 
       .col-4.btn-group.btn-group-toggle data-toggle="buttons"
         label.btn.btn-outline-info style="width:50%"
-          = f.radio_button :status, true
+          = f.radio_button :status, true, {}
           | ON
 
         label.btn.btn-outline-secondary style="width:50%"
-          = f.radio_button :status, false
+          = f.radio_button :status, false, {}
           | OFF
       .col-4
 

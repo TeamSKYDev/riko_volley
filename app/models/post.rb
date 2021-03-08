@@ -3,4 +3,6 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :exercises
 
   belongs_to :user
+
+  validates :title, presence:true
 end

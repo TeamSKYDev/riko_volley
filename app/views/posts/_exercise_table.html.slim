@@ -1,6 +1,6 @@
 table.table
   thead
-    tr 
+    tr
       th scope='col'
         | 日時
       th scope='col'
@@ -9,7 +9,7 @@ table.table
         | 終了時刻
       th scope='col'
         | 場所
-  tbody 
+  tbody
     - exercises.each do |exercise|
       tr
         td
@@ -19,7 +19,5 @@ table.table
         td
           = exercise.end_time
         td
-          - if exercise.place.present?
-            = exercise.place.name
-          - else
-            | (削除されています)
+          = exercise.place_name
+
