@@ -1,0 +1,56 @@
+name: RailsDeploy
+
+on:
+  push:
+    branches: [ master ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11.10
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test
+        ports:
+        - 5432:5432
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+    - uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: yarn-${{ hashFiles('**/yarn.lock') }}
+    - name: Setup yarn and node
+      run: |
+        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+        apt-get update -qq
+        apt-get install -y nodejs yarn
+        yarn install
+    - name: Setup bundles
+      run: bundle install
+    - name: Setup Database
+      run: |
+        bundle exec rails db:create
+        bundle exec rails db:migrate
+    - name: Run tests
+      run: |
+        bundle exec rails test
+  deploy:
+    needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - uses: akhileshns/heroku-deploy@v3.7.8
+          with:
+            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+            heroku_app_name: 'Herokuに登録したアプリ名'
+            heroku_email: 'Herokuに登録したメールアドレス'
