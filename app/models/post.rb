@@ -4,7 +4,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  validates :title, presence:true
+  validates :title, presence: true
 
   def create_message
     message = self.title

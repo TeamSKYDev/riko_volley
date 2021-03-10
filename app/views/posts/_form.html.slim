@@ -3,7 +3,7 @@
 
   .form-group
     = f.label(:title, 'タイトル')
-    = f.text_field(:title, placeholder: 'タイトル', class: 'form-control')
+    = f.text_field(:title, placeholder: '○月の練習日程について', class: 'form-control')
   .form-group
     = f.label(:body, '内容')
     = f.text_area(:body, rows: 7, class: 'form-control')
@@ -20,5 +20,5 @@
 
   .container
     .row.action
-        .col-2.offset-10
-          = f.submit "投稿", class: "btn btn-primary form-control reset-cookie-button"
+      .text-right
+        = f.submit "投稿", class: "btn btn-primary form-control reset-cookie-button"

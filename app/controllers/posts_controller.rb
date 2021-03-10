@@ -18,7 +18,7 @@ class PostsController < ApplicationController
         type: 'text',
         text: @post.create_message
       }
-      client.broadcast(message)
+      # client.broadcast(message)
 
       redirect_to posts_path
     else
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
         type: 'text',
         text: "「" + @post.title + "」に変更がありました！\nURLから確認してください！"
       }
-      client.broadcast(message)
+      # client.broadcast(message)
       redirect_to posts_path
     else
       render "edit"
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
 
   private
   def set_posts
-    @pagy, @posts = pagy(Post.all.includes([:user]).order(id: :desc), items: 5)
+    @pagy, @posts = pagy(Post.all.includes([:exercises, :user]).order(id: :desc), items: 5)
   end
 
   def set_post

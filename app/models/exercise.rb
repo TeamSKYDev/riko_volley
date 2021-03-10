@@ -1,5 +1,5 @@
 class Exercise < ApplicationRecord
-  belongs_to :post
+  belongs_to :post, touch: true
 
   def self.search_for(schedule)
     if schedule.include?("今日")

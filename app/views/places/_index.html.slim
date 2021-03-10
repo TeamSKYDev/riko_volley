@@ -1,27 +1,23 @@
-.container
-  .row
-    .col-5
-      h4.mb-3
-        | 並び替え
-      .place-index.overflow-auto style="height: 400px;"
-        table.table.table-hover.border-bottom style="background-color: #fff7ef;"
-          tbody#places data-url="#{sort_places_path}"
-            - places.each do |place|
-              = content_tag :tr, id: dom_id(place), class: dom_class(place) do
-                td.handle
-                  i.fas.fa-th.text-secondary
-                td
-                  = place.name
-                td
-                  = link_to "削除", place_path(place), method: :delete, class: "text-danger", data: { confirm: '削除してよろしいですか？'}
-
-    .col-6.offset-1
-      h4.mb-3
-        | 新規追加
-      = form_with(model: place, local: true) do |f|
-        .input-group
-          = f.text_field :name, placeholder: "場所名", class: "form-control place-form"
-          .input-group-append
-            = f.submit "登録", class: "btn btn-primary"
-
-
+.d-flex.justify-content-between.changeable
+  .col.mb-3
+    h4
+      | 並び替え
+    .place-index.overflow-auto 
+      table.table.table-hover.border-bottom style="background-color: #fff7ef;"
+        tbody#places data-url="#{sort_places_path}"
+          - places.each do |place|
+            = content_tag :tr, id: dom_id(place), class: dom_class(place) do
+              td.handle
+                i.fas.fa-th.text-secondary
+              td
+                = place.name
+              td
+                = link_to "削除", place_path(place), method: :delete, class: "text-danger", data: { confirm: '削除してよろしいですか？'}
+  .col.mb-3
+    h4
+      | 新規追加
+    = form_with(model: place, local: true) do |f|
+      .input-group
+        = f.text_field :name, placeholder: "場所名", class: "form-control place-form"
+        .input-group-append
+          = f.submit "登録", class: "btn btn-primary"
