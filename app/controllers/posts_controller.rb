@@ -12,17 +12,19 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
-      flash[:notice] = "投稿完了"
-      message = {
-        type: 'text',
-        text: @post.create_message
-      }
-      # client.broadcast(message)
+    ActiveRecord::Base.no_touching do
+      if @post.save
+        flash[:notice] = "投稿完了"
+        message = {
+          type: 'text',
+          text: @post.create_message
+        }
+        # client.broadcast(message)
 
-      redirect_to posts_path
-    else
-      render "index"
+        redirect_to posts_path
+      else
+        render "index"
+      end
     end
   end
 
