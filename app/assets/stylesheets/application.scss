@@ -47,8 +47,11 @@ body{
 }
 
 @media (max-width: 576px) {
-  #admin_menu, input::placeholder, header li.nav-item, table.table, #visitor_menu p, #visitor_menu h6{
+  #admin_menu, input::placeholder, header li.nav-item, #visitor_menu p, #visitor_menu h6{
     font-size: 12px;
+  }
+  table.table{
+    font-size: 11px;
   }
   body h2 {
     font-size: 28px

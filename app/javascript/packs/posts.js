@@ -1,6 +1,4 @@
-var $win = $(window);
-
-$win.on('load resize', function() {
+$(document).on('turbolinks:load', function() {
   var windowWidth = window.innerWidth;
 
   if (windowWidth < 768) {
@@ -8,7 +6,7 @@ $win.on('load resize', function() {
     $('.d-flex.changeable').addClass('flex-column');
     $('.col-toggle').removeClass('col-8');
     $('.btn').addClass('btn-sm');
-    
+
   }else{
     $('.d-flex.changeable').removeClass('flex-column');
     $('.d-flex.changeable').addClass('justify-content-between');
