@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  has_many :exercises, dependent: :destroy
+  has_many :exercises, ->{order('started_at')}, dependent: :destroy
   accepts_nested_attributes_for :exercises
 
   belongs_to :user
@@ -12,7 +12,7 @@ class Post < ApplicationRecord
     if self.exercises.present?
       message = message + "\n〇練習日程"
       self.exercises.each do |exercise|
-        message = message +"\n" + exercise.started_at.strftime("%m/%d %H:%M") + "~ @" + exercise.place_name
+        message = message +"\n" + exercise.started_at.strftime("%m/%d(#{I18n.t('date.abbr_day_names')[exercise.started_at.wday]}) %H:%M") + "~ @" + exercise.place_name
       end
     end
     return message
