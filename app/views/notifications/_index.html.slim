@@ -1,26 +1,25 @@
 = form_with model: notification do |f|
-  .row
-    .col-8.changeable
-      .row.form-group
-        .col-5.text-center.m-0
-          = f.label :status, "リマインダ", class: "form-label font-weight-bold"
+  .col-8.col-toggle.offset-1
+    .row.form-group.mb-3
+      .col-5
+        = f.label :status, "リマインダ", class: "form-label font-weight-bold"
 
-        .col-7.btn-group.btn-group-toggle data-toggle="buttons"
-          label.btn.btn-outline-info 
-            = f.radio_button :status, true, {}
-            | ON
+      .col-7.btn-group.btn-group-toggle data-toggle="buttons"
+        label.btn.btn-outline-info 
+          = f.radio_button :status, true, {}
+          | ON
 
-          label.btn.btn-outline-secondary 
-            = f.radio_button :status, false, {}
-            | OFF
+        label.btn.btn-outline-secondary 
+          = f.radio_button :status, false, {}
+          | OFF
 
-      .row.form-group
-        .col-5.text-center
-          = f.label :status, "日にち設定", class: "form-label font-weight-bold"
+    .row.form-group.mb-3
+      .col-5
+        = f.label :status, "日にち設定", class: "form-label font-weight-bold"
 
-        .col-7
-          = f.number_field(:days_before, min: 0, class: "form-control bootstrap-number")
-          | 日前にLineでお知らせ
-      .text-right
-        = f.submit "保存", class: "btn btn-primary"
+      .col-7
+        = f.number_field(:days_before, min: 0, class: "form-control bootstrap-number")
+        | 日前にLineでお知らせ
+    .text-right
+      = f.submit "保存", class: "btn btn-primary"
       
