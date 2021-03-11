@@ -2,7 +2,7 @@
   .col.mb-3
     h4
       | 並び替え
-    .place-index.overflow-auto 
+    .place-index.overflow-auto
       table.table.table-hover.border-bottom style="background-color: #fff7ef;"
         tbody#places data-url="#{sort_places_path}"
           - places.each do |place|
