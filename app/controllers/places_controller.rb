@@ -1,4 +1,7 @@
 class PlacesController < ApplicationController
+
+  before_action :check_sign_in,          only: %i[create destory]
+
   def sort
     # accept the post with all the items to sort.
     params[:place].each_with_index do |id, index|
