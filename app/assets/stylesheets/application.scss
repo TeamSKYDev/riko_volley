@@ -94,8 +94,10 @@ body{
   .exercise-field-wrap {
     overflow-x: auto;
     white-space: nowrap;
-
+  }
+  .nested-fields {
+    min-width: 90%;
+    overflow-x: auto;
   }
 
 }
-
