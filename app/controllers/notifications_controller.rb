@@ -1,5 +1,7 @@
 class NotificationsController < ApplicationController
 
+  before_action :check_sign_in,          only: %i[update]
+
   def update
     @notification = Notification.first
     if @notification.update(notification_params)
