@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     ActiveRecord::Base.no_touching do
-      if @post.save!
+      if @post.save
         flash[:notice] = "投稿完了"
         message = {
           type: 'text',
