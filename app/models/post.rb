@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  has_many :exercises, ->{order('started_at')}, dependent: :destroy
+  has_many :exercises, ->{order('started_at')}, inverse_of: :post, dependent: :destroy
   accepts_nested_attributes_for :exercises
 
   belongs_to :user

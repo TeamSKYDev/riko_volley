@@ -4,8 +4,8 @@ class PostsController < ApplicationController
   before_action :check_sign_in,          only: %i[create edit update destory]
   before_action :set_post,               only: %i[index create destroy edit update]
   before_action :check_user,             only: %i[edit update]
-  before_action :set_posts,              only: %i[index create edit]
-  before_action :set_place_notification, only: %i[index create edit]
+  before_action :set_posts,              only: %i[index]
+  before_action :set_place_notification, only: %i[index edit]
 
   def index
   end
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     ActiveRecord::Base.no_touching do
-      if @post.save
+      if @post.save!
         flash[:notice] = "投稿完了"
         message = {
           type: 'text',
