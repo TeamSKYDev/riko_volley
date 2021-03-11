@@ -1,21 +1,21 @@
 .card.shadow
   .card-body
-    .d-flex.justify-content-between
+    .d-flex.justify-content-between.mb-3.changeable
       h4.card-title
         = post.title
-      div.d-flex
-        h6.card-subtitle.text-muted.text-right
-          | 投稿日:
-          = post.created_at.strftime("%F (#{I18n.t('date.abbr_day_names')[post.created_at.wday]}) %H:%M")
-          - unless post.created_at == post.updated_at
-            br
-            | (編集済み)
-    p.card-text
-      = simple_format(post.body)
-      - if post.exercises.present?
-        h5.card_title
-          | 練習日程
-        = render(partial: 'exercise_table', locals: { exercises: post.exercises } )
+      h6.card-subtitle.text-muted
+        | 投稿日:
+        = post.created_at.strftime("%F (#{I18n.t('date.abbr_day_names')[post.created_at.wday]}) %H:%M")
+        - unless post.created_at == post.updated_at
+          |  (編集済み)
+    .card-text
+      .post-body.mb-4
+        = simple_format(post.body)
+      .post-exercises
+        - if post.exercises.present?
+          h5.card_title
+            | 練習日程
+          = render(partial: 'exercise_table', locals: { exercises: post.exercises } )
     .text-right
       - if user_signed_in?
         - if current_user.id == post.user.id

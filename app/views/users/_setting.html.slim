@@ -1,18 +1,18 @@
-.container
+
+.col-8.col-toggle.offset-1
   .row.font-weight-bold.mb-3
-    .col-3.offset-1
+    .col-5
       label
         | 登録アドレス
-    .col-8
+    .col-7
       = current_user.email
 
   .row.font-weight-bold.mb-3
-    .col-3.offset-1
-        label
-          | パスワード
-    .col-8
+    .col-5
+      label
+        | パスワード
+    .col-7
       | *************
 
-  .row.action
-      .col-2.offset-10
-        = link_to "編集", edit_user_registration_path, class: "btn btn-primary w-100", data: {"turbolinks" => false}
+  .text-right
+    = link_to "編集", edit_user_registration_path, class: "btn btn-primary", data: {"turbolinks" => false}

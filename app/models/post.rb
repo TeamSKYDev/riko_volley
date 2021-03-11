@@ -1,10 +1,10 @@
 class Post < ApplicationRecord
-  has_many :exercises, dependent: :destroy
+  has_many :exercises, ->{order('started_at')}, dependent: :destroy
   accepts_nested_attributes_for :exercises
 
   belongs_to :user
 
-  validates :title, presence:true
+  validates :title, presence: true
 
   def create_message
     message = self.title

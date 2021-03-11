@@ -12,17 +12,19 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
-      flash[:notice] = "投稿完了"
-      message = {
-        type: 'text',
-        text: @post.create_message
-      }
-      client.broadcast(message)
+    ActiveRecord::Base.no_touching do
+      if @post.save
+        flash[:notice] = "投稿完了"
+        message = {
+          type: 'text',
+          text: @post.create_message
+        }
+        client.broadcast(message)
 
-      redirect_to posts_path
-    else
-      render "index"
+        redirect_to posts_path
+      else
+        render "index"
+      end
     end
   end
 
@@ -54,7 +56,7 @@ class PostsController < ApplicationController
 
   private
   def set_posts
-    @pagy, @posts = pagy(Post.all.includes([:user]).order(id: :desc), items: 5)
+    @pagy, @posts = pagy(Post.all.includes([:exercises, :user]).order(id: :desc), items: 5)
   end
 
   def set_post

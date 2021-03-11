@@ -1,6 +1,6 @@
 .nested-fields.mb-2
-  = f.datetime_select :started_at, {minute_step: 5}, {class: "form-control bootstrap-date"}
+  = f.datetime_select :started_at, {minute_step: 5}, {class: "form-control bootstrap-date form-control-sm"}
   | ~
-  = f.time_select :ended_at, {minute_step: 5}, {class: "form-control bootstrap-date"}
-  = f.collection_select(:place_name, Place.order(:position), :name, :name, {}, {class: "form-control bootstrap-date"})
+  = f.time_select :ended_at, {minute_step: 5}, {class: "form-control bootstrap-date form-control-sm"}
+  = f.collection_select(:place_name, @places, :name, :name, {}, {class: "form-control bootstrap-date form-control-sm"})
   = link_to_remove_association '', f, class: "far fa-times-circle ml-2 text-danger text-decoration-none"
