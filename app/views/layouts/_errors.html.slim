@@ -1,7 +1,7 @@
 - if obj.errors.any?
-    #error_explanation
-      h5
-        | エラーがあります
+    #error_explanation.mt-3.text-danger
+      h5.fas.fa-exclamation-triangle.mb-2
+        |  入力に誤りがあります
 
       ul
         - obj.errors.full_messages.each do |message|

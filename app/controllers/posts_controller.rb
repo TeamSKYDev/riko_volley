@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   include Pagy::Backend
 
   before_action :check_sign_in,          only: %i[create edit update destory]
-  before_action :set_post,               only: %i[index create destroy edit update]
+  before_action :set_post,               only: %i[index destroy edit update]
   before_action :check_user,             only: %i[edit update]
   before_action :set_posts,              only: %i[index]
   before_action :set_place_notification, only: %i[index edit]
@@ -23,6 +23,8 @@ class PostsController < ApplicationController
 
         redirect_to posts_path
       else
+        set_place_notification
+        set_posts
         render "index"
       end
     end

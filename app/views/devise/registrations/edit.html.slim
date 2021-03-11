@@ -8,9 +8,10 @@ h2
     = f.email_field :email, autofocus: true, autocomplete: "email"
 
   .field.mt-3
-    = f.label :password
-    i
-      | 　＊変更しない場合には空欄にしてください
+    = f.label :password, class: "mb-0"
+    br
+    i.text-secondary
+      | ＊変更しない場合には空欄
     br
     = f.password_field :password, autocomplete: "new-password"
       - if @minimum_password_length
@@ -23,9 +24,10 @@ h2
     br
     = f.password_field :password_confirmation, autocomplete: "new-password"
   .field.mt-3
-    = f.label :current_password
+    = f.label :current_password, class: "mb-0 font-weight-bold"
+    br
     i.text-danger
-      | 　＊変更には現在のパスワードが必要です
+      | ＊変更には現在のパスワードが必要です
     br
     = f.password_field :current_password, autocomplete: "current-password"
   .actions.mt-4

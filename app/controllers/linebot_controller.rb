@@ -15,7 +15,6 @@ class LinebotController < ApplicationController
      # bodyに打ち込まれた値の格納(JSON)
      body = request.body.read
 
-     #X-Line-Signatureリクエストヘッダーに含まれる署名を検証して、リクエストがLINEプラットフォームから送信されたことを確認する必要があります.(公式)
      #アカウントによっては(課金の都合？)送信できなこともあるため、このチェックが必要
      signature = request.env['HTTP_X_LINE_SIGNATURE']
      unless client.validate_signature(body, signature)
@@ -57,6 +56,5 @@ class LinebotController < ApplicationController
 
      head :ok
    end
-   
 
 end
