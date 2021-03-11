@@ -74,9 +74,27 @@ body{
     font-size: 12px;
   }
 
-  .nested-fields {
-    min-width: 90%;
+  .content.mt-5 {
+    margin-top: 1.5rem !important;
+  }
+  #admin_menu {
+    .p-5 {
+      padding: 1rem !important;
+    }
+    .form-control {
+      font-size: 11px;
+    }
+  }
+
+  #notification {
+    label.btn-sm {
+      font-size: 11px;
+    }
+  }
+  .exercise-field-wrap {
     overflow-x: auto;
+    white-space: nowrap;
+
   }
 
 }

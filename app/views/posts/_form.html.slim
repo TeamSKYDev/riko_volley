@@ -11,12 +11,12 @@
 
   label
     | 練習日程
+  .exercise-field-wrap.pb-3
+    = f.fields_for :exercises do |e|
+      = render 'exercise_fields',  f: e
 
-  = f.fields_for :exercises do |e|
-    = render 'exercise_fields',  f: e
-
-  .links
-    = link_to_add_association(" 日程の追加", f, :exercises, wrap_object: wrap_obj, class: "fas fa-plus text-info text-decoration-none")
+    .links
+      = link_to_add_association(" 日程の追加", f, :exercises, wrap_object: wrap_obj, class: "fas fa-plus text-info text-decoration-none")
 
   .text-right
     = f.submit "投稿", class: "btn btn-primary reset-cookie-button"
