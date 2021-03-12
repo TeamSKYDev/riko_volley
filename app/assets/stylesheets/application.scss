@@ -45,30 +45,6 @@
 
 }
 
-.post-exercises {
-    table {
-      table-layout:fixed;
-
-      th:nth-child(1) {
-        width: 26%;
-      }
-      th:nth-child(2) {
-        width: 20%;
-      }
-      th:nth-child(3) {
-        width: 20%;
-      }
-      th:nth-child(4) {
-        width: 34%;
-      }
-
-      td {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
-}
 
 body{
   @include font-size(1rem);
