@@ -45,6 +45,7 @@
 
 }
 
+
 body{
   @include font-size(1rem);
 }
@@ -95,9 +96,6 @@ body{
     overflow-x: auto;
     white-space: nowrap;
   }
-  .nested-fields {
-    min-width: 90%;
-    overflow-x: auto;
-  }
+
 
 }

@@ -6,6 +6,8 @@ class NotificationsController < ApplicationController
     @notification = Notification.first
     if @notification.update(notification_params)
       flash[:notice] = "保存しました"
+    else
+      flash[:error] = "エラー"
     end
     redirect_back(fallback_location: root_path)
   end

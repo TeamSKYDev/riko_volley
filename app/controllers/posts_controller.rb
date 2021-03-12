@@ -51,6 +51,8 @@ class PostsController < ApplicationController
       client.broadcast(message)
       redirect_to posts_path
     else
+      set_place_notification
+      set_posts
       render "edit"
     end
   end
