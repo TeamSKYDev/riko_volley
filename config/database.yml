@@ -83,7 +83,4 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: riko_volley_production
-  username: riko_volley
-  password: <%= ENV['RIKO_VOLLEY_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
