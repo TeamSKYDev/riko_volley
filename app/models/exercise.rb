@@ -36,7 +36,7 @@ class Exercise < ApplicationRecord
   end
 
   def self.search_for_days_after(setting_day)
-    Exercise.where(started_at: DateTime.today.since(setting_day.days).all_day)
+    Exercise.where(started_at: Time.current.since(setting_day.days).all_day)
   end
 
   def self.set_notification(setting_day)
