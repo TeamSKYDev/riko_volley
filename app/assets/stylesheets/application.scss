@@ -25,6 +25,11 @@
   width: 50%;
 }
 
+.fa-line.navbar-brand {
+  color: #1dcd00 !important;
+  font-size: 28px;
+}
+
 #admin_menu {
   ul{
     .active {
@@ -66,8 +71,12 @@ body{
   body h4 {
     font-size: 20px
   }
-  body h5 {
+  body h5, header a.navbar-brand{
     font-size: 16px
+  }
+
+  header a.navbar-brand.fa-line {
+    font-size: 18px !important;
   }
 
   .sign-in {
@@ -96,6 +105,4 @@ body{
     overflow-x: auto;
     white-space: nowrap;
   }
-
-
 }
