@@ -1,0 +1,7 @@
+.notice-message
+  - if flash[:notice]
+    javascript:
+      toastr.success("#{flash[:notice]}")
+  - elsif flash[:error]
+    javascript:
+      toastr.error("#{flash[:error]}")

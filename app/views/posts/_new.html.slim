@@ -1,0 +1,11 @@
+#admin_menu.mb-4
+  = render "tab"
+  .tab-content.p-5.border-right.border-bottom.border-left style="background-color: #fffcf9;"
+    #post.tab-pane.fade.show.active
+      = render "form", post: post, places: places, wrap_obj: wrap_obj
+    #place.tab-pane.fade
+      = render "places/index", places: places, place: place
+    #notification.tab-pane.fade
+      = render "notifications/index", notification: notification
+    #account.tab-pane.fade
+      = render "users/setting"

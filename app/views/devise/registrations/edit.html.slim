@@ -1,0 +1,36 @@
+h4
+  | アカウント編集
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = render "layouts/errors", obj: resource
+  .field.mt-3
+    = f.label :email
+    br
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+
+  .field.mt-3
+    = f.label :password, class: "mb-0"
+    br
+    i.text-secondary
+      | ＊変更しない場合には空欄
+    br
+    = f.password_field :password, autocomplete: "new-password"
+      - if @minimum_password_length
+        br
+        em
+          = @minimum_password_length
+          |  characters minimum
+  .field.mt-3
+    = f.label :password_confirmation
+    br
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .field.mt-3
+    = f.label :current_password, class: "mb-0 font-weight-bold"
+    br
+    i.text-danger
+      | ＊変更には現在のパスワードが必要です
+    br
+    = f.password_field :current_password, autocomplete: "current-password"
+  .actions.mt-4
+    = f.submit "　更新　", class: "btn btn-outline-secondary mr-3 reset-cookie-button"
+    = link_to "　戻る　", posts_path, class: "btn btn-primary reset-cookie-button", data: {"turbolinks" => false}
+

@@ -1,0 +1,33 @@
+= form_with model: notification do |f|
+  .col-8.col-toggle.offset-1
+    .mb-3
+      h5
+        | りこばれbotでお知らせ
+      p.mb-0
+        | LINEでりこばれbotを登録すると練習日程を通知するよ！
+      p
+        | 友達登録は
+        = link_to('こちら', 'https://liff.line.me/1645278921-kWRPP32q?accountId=484dazch&openerPlatform=native&openerKey=home%3Arecommend', target: :_blank)
+        | か右上のアイコンから！
+    .row.form-group.mb-3
+      .col-5
+        = f.label :status, "リマインダ", class: "form-label font-weight-bold"
+
+      .col-7.btn-group.btn-group-toggle data-toggle="buttons"
+        label.btn.btn-outline-info
+          = f.radio_button :status, true, {}
+          | ON
+
+        label.btn.btn-outline-secondary
+          = f.radio_button :status, false, {}
+          | OFF
+
+    .row.form-group.mb-3
+      .col-5
+        = f.label :status, "日にち設定", class: "form-label font-weight-bold"
+
+      .col-7
+        = f.number_field(:days_before, min: 0, class: "form-control bootstrap-number")
+        | 日前
+    .text-right
+      = f.submit "保存", class: "btn btn-primary"

@@ -52,5 +52,34 @@ group :test do
   gem 'webdrivers'
 end
 
+group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'ridgepole'
+gem 'warning'
+
+
+gem 'devise'
+
+gem 'line-bot-api'
+
+gem 'dotenv-rails'
+
+gem 'font-awesome-sass', '~> 5.13'
+
+gem 'slim-rails'
+
+gem 'cocoon'
+
+gem 'pry-byebug'
+
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+gem 'pagy'
+gem "acts_as_list"

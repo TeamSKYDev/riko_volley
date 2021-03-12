@@ -3,7 +3,7 @@ services:
   postgres:
     image: postgres
     ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
       POSTGRES_USER: 'root'
       POSTGRES_PASSWORD: 'password'
@@ -14,7 +14,10 @@ services:
       - "3000:3000"
     volumes:
       - .:/riko_volley
+      - bundle:/usr/local/bundle #bundle installした後buildし直さなくてよくなる
     depends_on:
       - postgres
     stdin_open: true
     tty: true
+volumes:
+  bundle: #bundle installした後buildし直さなくてよくなる

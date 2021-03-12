@@ -1,0 +1,4 @@
+- if user_signed_in?
+  = render(partial: 'new', locals:{ post: @post, places: @places, place: @place, notification: @notification, wrap_obj: @wrap_obj})
+
+= link_to "一覧に戻る", posts_path, class: "btn btn-outline-info"

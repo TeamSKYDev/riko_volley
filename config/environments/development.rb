@@ -69,8 +69,15 @@ Rails.application.configure do
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.file_watcher = ActiveSupport::FileUpdateChecker
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.reload_classes_only_on_change = false
+
+  # ngrok用。ngrok立ち上げるごと変更が必要。コンフリのときは消して問題なし
+  config.hosts << "9a684ac54806.ngrok.io"
 end
+
+BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
