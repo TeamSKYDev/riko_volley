@@ -17,4 +17,13 @@ class Post < ApplicationRecord
     end
     return message
   end
+
+  def edit_message(past_title)
+    if self.title == past_title
+      message = "「" + self.title + "」に変更がありました！\nURLから確認してください！"
+    else
+      message = "「" + past_title + "」に変更がありました！\nタイトルが「" + self.title + "」に変わっています。\nURLから確認してください！"
+    end
+    return message
+  end
 end
