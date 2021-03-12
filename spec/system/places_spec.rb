@@ -16,7 +16,7 @@ describe '場所設定のテスト' do
     expect(page).to have_content '保存'
   end
 
-  it '登録に失敗する' do
+  it '登録に失敗する', js: true do
     click_button '登録'
     expect(page).to have_content 'エラー'
   end

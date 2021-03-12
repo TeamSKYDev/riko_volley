@@ -65,10 +65,36 @@ describe 'ヘッダーのテスト' do
         is_expected.to eq(posts_path)
       end
       it 'ログアウトする', js: true do
-        logout_link = find_all('a')[1].native.inner_text
-        logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link logout_link
+        sleep 6
+        click_link 'ログアウト'
         expect(page).to have_content 'ログアウト'
+      end
+    end
+  end
+  describe 'ログインしている場合(管理者)' do
+    let(:user2) { create(:user, is_admin: true) }
+    before do
+      visit new_user_session_path
+      fill_in 'user[email]', with: user2.email
+      fill_in 'user[password]', with: user2.password
+      click_button 'ログイン'
+    end
+    context 'ヘッダーの表示を確認' do
+      subject { page }
+      it '管理者リンクが表示される' do
+        brand_link = find_all('a')[1].native.inner_text
+        expect(brand_link).to match('管理者')
+      end
+    end
+
+    context 'ヘッダーのリンクを確認' do
+      subject { current_path }
+      it '管理者画面に遷移する' do
+        admin_link = find_all('a')[1].native.inner_text
+        admin_link = admin_link.delete(' ')
+        admin_link.gsub!(/\n/, '')
+        click_link admin_link
+        is_expected.to eq(users_path)
       end
     end
   end

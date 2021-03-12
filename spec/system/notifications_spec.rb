@@ -15,5 +15,10 @@ describe 'リマインダ設定のテスト' do
     click_button '保存'
     expect(page).to have_content '保存'
   end
+  it '更新に失敗する', js: true do
+    fill_in 'notification[days_before]', with: ""
+    click_button '保存'
+    expect(page).to have_content 'エラー'
+  end
 
 end

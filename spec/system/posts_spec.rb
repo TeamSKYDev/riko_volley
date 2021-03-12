@@ -5,8 +5,8 @@ describe '投稿のテスト' do
 	let!(:user2) { create(:user) }
   let!(:post) { create(:post, user: user) }
 	let!(:post2) { create(:post, user: user2) }
-	let!(:exercise) { create(:exercise, post: post) }
-	let!(:exercise2) { create(:exercise, post: post2)}
+	let(:exercise) { create(:exercise, post: post) }
+	let(:exercise2) { create(:exercise, post: post2)}
   let!(:place) { create(:place) }
   let!(:notification) { create(:notification) }
   before do
@@ -18,7 +18,7 @@ describe '投稿のテスト' do
 
 	describe '新規投稿のテスト', js: true do
 		it '投稿に成功する(練習あり)' do
-			clic_link '日程の追加'
+			click_link '日程の追加'
 			fill_in 'post[title]', with: Faker::Lorem.characters(number:5)
 			fill_in 'post[body]', with: Faker::Lorem.characters(number:20)
 			click_button '投稿'
@@ -136,23 +136,13 @@ describe '投稿のテスト' do
   			expect(page).to have_content '投稿一覧'
   		end
 
-  		it '自分と他人のtitleが表示される' do
+  		it '自分と他人の投稿のtitleが表示される' do
   			expect(page).to have_content post.title
   			expect(page).to have_content post2.title
   		end
-  		it '自分と他人のbodyが表示される' do
+  		it '自分と他人の投稿のbodyが表示される' do
   			expect(page).to have_content post.body
   			expect(page).to have_content post2.body
-  		end
-			it '自分と他人の練習日程が表示される' do
-  			expect(page).to have_content exercise.date
-				expect(page).to have_content exercise.start_time
-				expect(page).to have_content exercise.end_time
-				expect(page).to have_content exercise.place_name
-  			expect(page).to have_content exercise2.date
-				expect(page).to have_content exercise2.start_time
-				expect(page).to have_content exercise2.end_time
-				expect(page).to have_content exercise2.place_name
   		end
   	end
 		context '自分の投稿の確認' do
