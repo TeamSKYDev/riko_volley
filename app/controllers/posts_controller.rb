@@ -42,11 +42,12 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
+    past_title = @post.title
     if @post.update(post_params)
       flash[:notice] = "編集完了"
       message = {
         type: 'text',
-        text: "「" + @post.title + "」に変更がありました！\nURLから確認してください！"
+        text: @post.edit_message(past_title)
       }
       client.broadcast(message)
       redirect_to posts_path
