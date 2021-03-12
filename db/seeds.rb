@@ -9,13 +9,13 @@
 User.create(
   [
     {
-      email: "a@a",
-      password: "aaaaaa"
+      email: ENV["admin_email"],
+      password: ENV["admin_password"],
+      is_admin: true
     },
     {
-      email: "b@b",
-      password: "bbbbbb",
-      is_admin: true
+      email: ENV["club_email"],
+      password: ENV["club_password"],
     }
   ]
 )
