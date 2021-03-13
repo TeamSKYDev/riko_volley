@@ -48,7 +48,7 @@ describe '投稿のテスト' do
 		context '他人の投稿の編集画面への遷移' do
 		  it '遷移できない' do
 		    visit edit_post_path(post2)
-		    expect(current_path).to eq('/posts')
+		    expect(current_path).to eq(posts_path)
 		  end
 		end
 		describe '表示の確認' do
