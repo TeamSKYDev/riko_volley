@@ -8,8 +8,7 @@ describe '管理者画面のテスト' do
   	fill_in 'user[email]', with: user2.email
   	fill_in 'user[password]', with: user2.password
   	click_button 'ログイン'
-    sleep 6
-    click_link '管理者'
+    visit users_path
   end
 
   context '表示のテスト' do
@@ -42,19 +41,19 @@ describe '管理者画面のテスト' do
 			expect(current_path).to eq '/users'
     end
   end
+end
 
-  context '管理者権限のテスト' do
-    before do
-      sleep 6
-      click_link 'ログアウト'
-      visit new_user_session_path
-      fill_in 'user[email]', with: user.email
-      fill_in 'user[password]', with: user.password
-      click_button 'ログイン'
-    end
-    it '管理者以外のユーザが遷移できない' do
-      visit users_path
-      expect(current_path).to eq('/posts')
-    end
+
+describe '管理者権限のテスト' do
+  let!(:user) { create(:user) }
+  before do
+    visit new_user_session_path
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[password]', with: user.password
+    click_button 'ログイン'
+  end
+  it '管理者以外のユーザが遷移できない' do
+    visit users_path
+    expect(current_path).to eq('/posts')
   end
 end

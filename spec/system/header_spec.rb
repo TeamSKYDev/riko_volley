@@ -65,7 +65,7 @@ describe 'ヘッダーのテスト' do
         is_expected.to eq(posts_path)
       end
       it 'ログアウトする', js: true do
-        sleep 6
+        sleep 10
         click_link 'ログアウト'
         expect(page).to have_content 'ログアウト'
       end
@@ -98,5 +98,4 @@ describe 'ヘッダーのテスト' do
       end
     end
   end
-
 end
