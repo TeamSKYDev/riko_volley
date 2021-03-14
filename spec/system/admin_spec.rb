@@ -8,6 +8,7 @@ describe '管理者画面のテスト' do
   	fill_in 'user[email]', with: user2.email
   	fill_in 'user[password]', with: user2.password
   	click_button 'ログイン'
+    sleep 6
     click_link '管理者'
   end
 
