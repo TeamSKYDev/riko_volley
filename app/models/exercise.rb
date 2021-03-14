@@ -3,22 +3,22 @@ class Exercise < ApplicationRecord
 
   def self.search_for(schedule)
     if schedule.include?("今日")
-      exercises = Exercise.where(started_at: DateTime.current.all_day)
+      exercises = Exercise.where(started_at: Time.current.all_day).order(:started_at)
       schedule_text = "今日"
     elsif schedule.include?("明日")
-      exercises = Exercise.where(started_at: DateTime.current.tomorrow.all_day)
+      exercises = Exercise.where(started_at: Time.current.tomorrow.all_day).order(:started_at)
       schedule_text = "明日"
     elsif schedule.include?("今週")
-      exercises = Exercise.where(started_at: DateTime.current.all_week)
+      exercises = Exercise.where(started_at: Time.current.all_week).order(:started_at)
       schedule_text = "今週"
     elsif schedule.include?("来週")
-      exercises = Exercise.where(started_at: DateTime.current.next_week.all_week)
+      exercises = Exercise.where(started_at: Time.current.next_week.all_week).order(:started_at)
       schedule_text = "来週"
     elsif schedule.include?("今月")
-      exercises = Exercise.where(started_at: DateTime.current.all_month)
+      exercises = Exercise.where(started_at: Time.current.all_month).order(:started_at)
       schedule_text = "今月"
     elsif schedule.include?("来月")
-      exercises = Exercise.where(started_at: DateTime.current.next_month.all_month)
+      exercises = Exercise.where(started_at: Time.current.next_month.all_month).order(:started_at)
       schedule_text = "来月"
     end
 
@@ -36,7 +36,7 @@ class Exercise < ApplicationRecord
   end
 
   def self.search_for_days_after(setting_day)
-    Exercise.where(started_at: Time.current.since(setting_day.days).all_day)
+    Exercise.where(started_at: Time.current.since(setting_day.days).all_day).order(:started_at)
   end
 
   def self.set_notification(setting_day)
