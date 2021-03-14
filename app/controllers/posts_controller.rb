@@ -19,7 +19,6 @@ class PostsController < ApplicationController
           text: @post.create_message
         }
         client.broadcast(message)
-
         redirect_to posts_path
       else
         set_place_notification
