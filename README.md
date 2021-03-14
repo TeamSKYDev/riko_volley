@@ -73,5 +73,13 @@ import '../stylesheets/application';
 <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 ```
 
-
+## Rspecテスト
+- gemの導入
+- configに一部設定
+- spec/ にテストファイルを記述
+- テストの実行
+```
+bundle exec rspec spec/
+```
+オプションで```--format documentation```をつけることで、テスト項目の表示可能
 

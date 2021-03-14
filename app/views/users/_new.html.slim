@@ -1,6 +1,7 @@
   h4
     | 新規ユーザ登録
   = form_with model: user, local:true do |f|
+    = render 'layouts/errors', obj: user
     .field.mt-3
       = f.label :email
       br
