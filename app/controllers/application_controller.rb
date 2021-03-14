@@ -18,10 +18,18 @@ class ApplicationController < ActionController::Base
   private
   # botアカウント(クライアント)設定
   def client
-    @client ||= Line::Bot::Client.new { |config|
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-    }
+    case Rails.env
+    when "production"
+      @client ||= Line::Bot::Client.new { |config|
+        config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+        config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+      }
+    when "test", "development"
+      @client ||= Line::Bot::Client.new { |config|
+        config.channel_secret = ENV["DEV_LINE_CHANNEL_SECRET"]
+        config.channel_token = ENV["DEV_LINE_CHANNEL_TOKEN"]
+      }
+    end
   end
 
 end

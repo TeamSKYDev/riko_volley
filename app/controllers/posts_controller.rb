@@ -7,8 +7,7 @@ class PostsController < ApplicationController
   before_action :set_posts,              only: %i[index]
   before_action :set_place_notification, only: %i[index edit]
 
-  def index
-  end
+  def index; end
 
   def create
     @post = Post.new(post_params)
@@ -20,7 +19,6 @@ class PostsController < ApplicationController
           text: @post.create_message
         }
         client.broadcast(message)
-
         redirect_to posts_path
       else
         set_place_notification

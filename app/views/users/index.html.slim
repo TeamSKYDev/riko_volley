@@ -1,8 +1,8 @@
-.row
-  .col-8
+.d-flex.justify-content-between.changeable
+  .col
     .user_index
       = render "index", users: @users
-  .col-3.offset-1
+  .col
     .user_create
       = render "new", user: @user
 
