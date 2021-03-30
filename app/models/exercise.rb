@@ -40,7 +40,9 @@ class Exercise < ApplicationRecord
   end
 
   def self.set_notification(setting_day)
-    if setting_day == 1
+    if setting_day == 0
+      display_day = "今日"
+    elsif setting_day == 1
       display_day = "明日"
     elsif setting_day == 2
       display_day = "明後日"
